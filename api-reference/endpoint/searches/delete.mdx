@@ -1,0 +1,21 @@
+---
+title: "Delete Search"
+api: "DELETE /searches/{id}"
+description: "Deletes an existing search."
+---
+
+### Path
+
+<ParamField path="id" type="string" required>
+  UUID of the selected search
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request DELETE 'https://api.notif.immo/searches/{id}' \
+--header 'Content-Type: application/json' \
+--header 'X-API-KEY: <api_key>' \
+```
+
+</RequestExample>

@@ -1,0 +1,254 @@
+---
+title: "Update Search"
+api: "PUT /searches/{id}"
+description: "Updates an existing search"
+---
+
+### Path
+
+<ParamField path="id" type="string" required>
+  UUID of the existing search
+</ParamField>
+
+### Body
+
+<ParamField body="bedroomMin" type="integer">
+  Minimum number of bedrooms in the property.
+</ParamField>
+
+<ParamField body="bedroomMin" type="integer">
+  Minimum number of bedrooms in the property.
+</ParamField>
+
+<ParamField body="budgetMax" type="integer"  >
+  Maximum budget for the property.
+</ParamField>
+<ParamField body="budgetMin" type="integer">
+  Minimum budget for the property.
+</ParamField>
+
+<ParamField body="endpointRecipient" type="string" >
+  Endpoint webhook to receive new matches in real time. Https url is required. You can test your endpoint here using our [webhhok simulator](api-reference/endpoint/webhooks/send).
+</ParamField>
+
+<ParamField body="eventEndpoint" type="string" >
+  Endpoint webhook to receive adverts events in real time. Https url is required. You can test your endpoint using our [webhhok simulator](api-reference/endpoint/webhooks/send)
+</ParamField>
+
+<ParamField body="excludedCities" type="array">
+  Cities to be excluded.
+</ParamField>
+
+<ParamField body="excludedSiteCategories" type="array">
+  Site categories to be excluded.
+</ParamField>
+
+<ParamField body="expressions" type="array">
+  Full text matching including/excluding words & phrases in the title or the description of the property.
+  Example: `expressions[0][0][word]=travaux&expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=false&expressions[0][1][word]=lumineux&expressions[0][1][options][includes]=true&expressions[0][1][options][strict]=false` which will search for properties that contain both the keywords `lumineux` and `travaux`.
+</ParamField>
+
+<ParamField body="furnished" type="boolean" >
+  Whether the property is furnished or not.
+</ParamField>
+
+<ParamField body="hidePropertyContact" type="boolean">
+  Whether to hide property contact information or not.
+</ParamField>
+
+<ParamField body="includedCities" type="array">
+  Included cities.
+</ParamField>
+
+<ParamField body="includedDepartments" type="array">
+  Included departments.
+</ParamField>
+
+<ParamField body="includedSiteCategories" type="array">
+  Included site categories.
+</ParamField>
+
+<ParamField body="landSurfaceMax" type="integer" >
+  Maximum land surface.
+</ParamField>
+
+<ParamField body="landSurfaceMin" type="integer"  >
+  Minimum land surface.
+</ParamField>
+
+<ParamField body="lat" type="number" >
+  Latitude. Will work if latitude exists in the property. Example: `lat=48.864716`
+</ParamField>
+
+<ParamField body="lon" type="number" >
+  Longitude. Will work if latitude exists in the property. Example: `lon=2.349014`
+</ParamField>
+
+<ParamField body="notificationEnabled" type="boolean" default="false">
+  Enable notifications which can be webhooks or emails.
+</ParamField>
+
+<ParamField body="pricePerMeterMax" type="integer"  >
+  Maximum price per meter.
+</ParamField>
+
+<ParamField body="pricePerMeterMin" type="integer"  >
+  Minimum price per meter.
+</ParamField>
+
+<ParamField body="propertyTypes" type="integer"  required >
+  Type of property. Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`. Example: `propertyTypes[]=0&propertyTypes[]=1`
+</ParamField>
+
+<ParamField body="publisherTypes" type="integer"  >
+  Type of publisher. Individual `0`, Professional `1`. Example: `publisherTypes[]=0&publisherTypes[]=1`
+</ParamField>
+
+<ParamField body="radius" type="integer" >
+  Distance expressed in kilometers. Will work if latitude & longitude exist in the property. Example: `radius=20`
+</ParamField>
+
+<ParamField body="roomMin" type="integer">
+  Minimum number of rooms.
+</ParamField>
+
+<ParamField body="roomMax" type="integer">
+  Maximum number of rooms.
+</ParamField>
+
+<ParamField body="subscribedEvents" type="array" >
+  Events you want to be alerted which will be sent to the `eventEndpoint`.
+</ParamField>
+
+<ParamField body="surfaceMax" type="integer"  >
+  Maximum property surface area.
+</ParamField>
+
+<ParamField body="surfaceMin" type="integer"  >
+  Minimum property surface area.
+</ParamField>
+
+<ParamField body="title" type="string" required>
+  Title of the created search.
+</ParamField>
+
+<ParamField body="transactionType" type="integer" required >
+  Type of transaction. Sell `0`, Rent `1`. Example: `transactionType=0`
+</ParamField>
+
+<ParamField body="withCoherentPrice" type="boolean" default="true">
+  Having properties with coherent prices.
+</ParamField>
+
+<ParamField body="withVirtualTour" type="boolean" >
+  Whether the property includes a virtual tour.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.notif.immo/searches/{id}' \
+--header 'Content-Type: application/json' \
+--header 'X-API-KEY: <api_key>' \
+--data-raw '{
+  "bedroomMin": 0,
+  "budgetMax": 0,
+  "budgetMin": 0,
+  "endpointRecipient": "https://www.mycompany.com/webhook_melo_match",
+  "eventEndpoint": "https://www.mycompany.com/webhook_melo_updates",
+  "excludedCities": [
+    "string"
+  ],
+  "excludedSiteCategories": [
+    "string"
+  ],
+  "expressions": "expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=true&expressions[1][0][word]=viager&expressions[1][0][options][includes]=true&expressions[1][0][options][strict]=true",
+  "furnished": true,
+  "hidePropertyContact": true,
+  "includedCities": [
+    "string"
+  ],
+  "includedDepartments": [
+    "string"
+  ],
+  "includedSiteCategories": [
+    "string"
+  ],
+  "landSurfaceMax": 0,
+  "landSurfaceMin": 0,
+  "lat": "48.864716",
+  "lon": "2.349014",
+  "notificationEnabled": false,
+  "notificationRecipient": "foo@bar.com",
+  "pricePerMeterMax": 0,
+  "pricePerMeterMin": 0,
+  "propertyTypes": 3,
+  "publisherTypes": 3,
+  "radius": "20",
+  "roomMin": 0,
+  "subscribedEvents": [
+    "ad.update.price"
+  ],
+  "surfaceMax": 0,
+  "surfaceMin": 0,
+  "title": "string",
+  "transactionType": "0",
+  "withCoherentPrice": true,
+  "withVirtualTour": true
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Example Response
+{
+  "bedroomMin": 0,
+  "budgetMax": 0,
+  "budgetMin": 0,
+  "endpointRecipient": "https://www.mycompany.com/webhook_melo_match",
+  "eventEndpoint": "https://www.mycompany.com/webhook_melo_updates",
+  "excludedCities": [
+    "string"
+  ],
+  "excludedSiteCategories": [
+    "string"
+  ],
+  "expressions": "expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=true&expressions[1][0][word]=viager&expressions[1][0][options][includes]=true&expressions[1][0][options][strict]=true",
+  "furnished": true,
+  "hidePropertyContact": true,
+  "includedCities": [
+    "string"
+  ],
+  "includedDepartments": [
+    "string"
+  ],
+  "includedSiteCategories": [
+    "string"
+  ],
+  "landSurfaceMax": 0,
+  "landSurfaceMin": 0,
+  "lat": "48.864716",
+  "lon": "2.349014",
+  "notificationEnabled": false,
+  "notificationRecipient": "foo@bar.com",
+  "pricePerMeterMax": 0,
+  "pricePerMeterMin": 0,
+  "propertyTypes": 3,
+  "publisherTypes": 3,
+  "radius": "20",
+  "roomMin": 0,
+  "subscribedEvents": [
+    "ad.update.price"
+  ],
+  "surfaceMax": 0,
+  "surfaceMin": 0,
+  "title": "string",
+  "transactionType": "0",
+  "withCoherentPrice": true,
+  "withVirtualTour": true
+}
+```
+
+</ResponseExample>

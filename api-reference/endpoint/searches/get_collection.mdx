@@ -1,0 +1,157 @@
+---
+title: "Searches"
+api: "GET /searches"
+description: "Returns a collection of your existing searches matching given criteria."
+---
+
+### Query parameters
+
+ <ParamField query="notificationEnabled" type="boolean">
+  Filter searches which have notifications enabled or not.
+  </ParamField>
+
+  <ParamField query="order[title]" type="string" placeholder="asc, desc">
+    Order searches by title. Can be `asc` or `desc`.
+  </ParamField>
+
+  <ParamField query="page" type="integer" default="1">
+    The collection page number.
+  </ParamField>
+
+  <ParamField query="title" type="string">
+    Title of the created search.
+  </ParamField>
+
+
+<RequestExample>
+
+```bash Example Request
+curl --location -g --request GET 'https://api.notif.immo/searches' \
+--header 'Content-Type: application/json' \
+--header 'platformOrigin: melo' \
+--header 'X-API-KEY: <api_key>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Example Response
+{
+  "hydra:member": [
+    {
+      "@context": "string",
+      "@id": "string",
+      "@type": "string",
+      "bedroomMin": 0,
+      "budgetMax": 0,
+      "budgetMin": 0,
+      "createdAt": "2019-08-24T14:15:22Z",
+      "endpointRecipient": "https://www.mycompany.com/webhook_melo_match",
+      "eventEndpoint": "https://www.mycompany.com/webhook_melo_updates",
+      "excludedCities": [
+        {
+          "@context": "string",
+          "@id": "string",
+          "@type": "string",
+          "article": "string",
+          "insee": "string",
+          "libelle": "string",
+          "name": "string",
+          "zipcode": "string"
+        }
+      ],
+      "excludedSiteCategories": [
+        {
+          "@context": "string",
+          "@id": "string",
+          "@type": "string",
+          "name": "string"
+        }
+      ],
+      "expressions": "expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=true&expressions[1][0][word]=viager&expressions[1][0][options][includes]=true&expressions[1][0][options][strict]=true",
+      "furnished": true,
+      "hidePropertyContact": true,
+      "includedCities": [
+        {
+          "@context": "string",
+          "@id": "string",
+          "@type": "string",
+          "article": "string",
+          "insee": "string",
+          "libelle": "string",
+          "name": "string",
+          "zipcode": "string"
+        }
+      ],
+      "includedDepartments": [
+        {
+          "@context": "string",
+          "@id": "string",
+          "@type": "string",
+          "chefLieu": "string",
+          "departmentCode": "string",
+          "name": "string",
+          "nameClean": "string"
+        }
+      ],
+      "includedSiteCategories": [
+        {
+          "@context": "string",
+          "@id": "string",
+          "@type": "string",
+          "name": "string"
+        }
+      ],
+      "landSurfaceMax": 0,
+      "landSurfaceMin": 0,
+      "lastAlertAt": "2019-08-24T14:15:22Z",
+      "lat": "48.864716",
+      "lon": "2.349014",
+      "notificationEnabled": false,
+      "notificationRecipient": "foo@bar.com",
+      "pricePerMeterMax": 0,
+      "pricePerMeterMin": 0,
+      "propertyTypes": 3,
+      "publisherTypes": 3,
+      "radius": "20",
+      "roomMin": 0,
+      "subscribedEvents": [
+        "ad.update.price"
+      ],
+      "surfaceMax": 0,
+      "surfaceMin": 0,
+      "title": "string",
+      "token": "string",
+      "transactionType": "0",
+      "updatedAt": "2019-08-24T14:15:22Z",
+      "user": "string",
+      "withCoherentPrice": true,
+      "withVirtualTour": true
+    }
+  ],
+  "hydra:totalItems": 0,
+  "hydra:view": {
+    "@id": "string",
+    "@type": "string",
+    "hydra:first": "string",
+    "hydra:last": "string",
+    "hydra:next": "string"
+  },
+  "hydra:search": {
+    "@type": "string",
+    "hydra:template": "string",
+    "hydra:variableRepresentation": "string",
+    "hydra:mapping": [
+      {
+        "@type": "string",
+        "variable": "string",
+        "property": "string",
+        "required": true
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>

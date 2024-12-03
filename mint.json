@@ -39,7 +39,6 @@
       "pages": [
         "api-reference/concepts",
         "api-reference/authentication",
-        "api-reference/environments",
         "api-reference/errors",
         "api-reference/faq"
       ]

@@ -1,0 +1,256 @@
+---
+title: "Points of Interest"
+api: "GET /indicators/points_of_interest"
+description: "This endpoint returns the points of interests matching the given criterias."
+---
+
+### Query parameters
+
+<ParamField query="facilities" type="array" placeholder="school, kindergarten, restaurant..." required>
+Category of points of interest. Current available categories are `kindergarten`, `school`, `restaurant`, `hospital`, `parking`.  Example: `facilities[]=kindergarten&facilities[]=school`
+</ParamField>
+
+<ParamField query="lat" type="number" required>
+  Latitude.
+</ParamField>
+
+<ParamField query="lon" type="number" required>
+  Longitude
+</ParamField>
+
+<ParamField query="radius" type="number" required>
+  Distance expressed in kilometers.
+</ParamField>
+
+
+<RequestExample>
+
+```bash Example Request
+curl --location -g --request GET 'https://api.notif.immo/indicators/points_of_interest?facilities[]=school&lat=48.8803424&lon=2.333215&radius=0.5' \
+--header 'Content-Type: application/json' \
+--header 'X-API-KEY: <api_key>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Example Response
+{
+    "@context": "/contexts/POIResource",
+    "@id": "/indicators/points_of_interest",
+    "@type": "hydra:Collection",
+    "hydra:member": [
+        {
+            "lat": 48.8830788,
+            "lon": 2.3285289,
+            "name": "École Maternelle Bruxelles",
+            "type": "school",
+            "attributes": {
+                "schoolType": "maternelle",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8832816,
+            "lon": 2.3287396,
+            "name": "École Élémentaire Bruxelles",
+            "type": "school",
+            "attributes": {
+                "schoolType": "élémentaire",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8780001,
+            "lon": 2.3316352,
+            "name": "École Maternelle",
+            "type": "school",
+            "attributes": {
+                "schoolType": "maternelle",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8787347,
+            "lon": 2.3280864,
+            "name": "École Francaise Privée des Hautes Études Commerciales",
+            "type": "school",
+            "attributes": {
+                "schoolType": "lycée",
+                "operatorType": "private"
+            }
+        },
+        {
+            "lat": 48.8759626,
+            "lon": 2.3322271,
+            "name": "Collège privé pour handicapés Morvan",
+            "type": "school",
+            "attributes": {
+                "schoolType": "collège",
+                "operatorType": "private"
+            }
+        },
+        {
+            "lat": 48.8760006,
+            "lon": 2.3322204,
+            "name": "Lycée privé pour handicapés Morvan",
+            "type": "school",
+            "attributes": {
+                "schoolType": "secondaire",
+                "operatorType": "private"
+            }
+        },
+        {
+            "lat": 48.8809464,
+            "lon": 2.3337578,
+            "name": "École Primaire",
+            "type": "school",
+            "attributes": {
+                "schoolType": "primaire",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.88098,
+            "lon": 2.3336251,
+            "name": "École Maternelle",
+            "type": "school",
+            "attributes": {
+                "schoolType": "maternelle",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8785422,
+            "lon": 2.3350915,
+            "name": "Cours Prive Hattemer",
+            "type": "school",
+            "attributes": {
+                "schoolType": "lycée",
+                "operatorType": "private"
+            }
+        },
+        {
+            "lat": 48.8779341,
+            "lon": 2.3289236,
+            "name": "Neoma",
+            "type": "school",
+            "attributes": []
+        },
+        {
+            "lat": 48.8839359,
+            "lon": 2.329592,
+            "name": "Lycée Jules Ferry",
+            "type": "school",
+            "attributes": {
+                "schoolType": "lycée",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8823203,
+            "lon": 2.3352731,
+            "name": "Section d'enseignement professionnel du Lycée polyvalent Edgar Quinet",
+            "type": "school",
+            "attributes": {
+                "schoolType": "lycée",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8813464,
+            "lon": 2.3391817,
+            "name": "Lycée Edgar Quinet",
+            "type": "school",
+            "attributes": {
+                "schoolType": "lycée",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8778096,
+            "lon": 2.3307598,
+            "name": "École élémentaire Clichy",
+            "type": "school",
+            "attributes": {
+                "schoolType": "élémentaire",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8780035,
+            "lon": 2.331446,
+            "name": "École primaire Blanche",
+            "type": "school",
+            "attributes": {
+                "schoolType": "élémentaire",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8781707,
+            "lon": 2.3386731,
+            "name": "École Notre-Dame de Lorette",
+            "type": "school",
+            "attributes": {
+                "schoolType": "primaire"
+            }
+        },
+        {
+            "lat": 48.8834526,
+            "lon": 2.3381247,
+            "name": "École primaire d'application Houdon",
+            "type": "school",
+            "attributes": {
+                "schoolType": "élémentaire",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.880935,
+            "lon": 2.3264026,
+            "name": "Collège Condorcet",
+            "type": "school",
+            "attributes": {
+                "schoolType": "collège",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8790551,
+            "lon": 2.3277605,
+            "name": "École élémentaire privée La Trinité",
+            "type": "school",
+            "attributes": {
+                "schoolType": "élémentaire",
+                "operatorType": "private"
+            }
+        },
+        {
+            "lat": 48.8792941,
+            "lon": 2.3387309,
+            "name": "École maternelle Clauzel",
+            "type": "school",
+            "attributes": {
+                "schoolType": "maternelle",
+                "operatorType": "public"
+            }
+        },
+        {
+            "lat": 48.8832372,
+            "lon": 2.3287064,
+            "name": null,
+            "type": "school",
+            "attributes": []
+        }
+    ],
+    "hydra:totalItems": 21,
+    "hydra:view": {
+        "@id": "/indicators/points_of_interest?facilities%5B%5D=school&lat=48.8803424&lon=2.333215&radius=0.5",
+        "@type": "hydra:PartialCollectionView"
+    }
+}
+```
+
+</ResponseExample>

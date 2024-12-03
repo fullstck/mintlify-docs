@@ -7,7 +7,7 @@ description: "This endpoint returns the price per meter `average`, `median` and 
 ### Query parameters
 
 <ParamField query="aggregationInterval" type="string" default="month" placeholder="month, year">
-Date histogram granularity for time series. Can be `month` or `year`.
+  Date histogram granularity for time series. Can be `month` or `year`.
 </ParamField>
 
 <ParamField query="bedroomMax" type="integer">
@@ -155,27 +155,27 @@ Date histogram granularity for time series. Can be `month` or `year`.
   The minimum value of green house gas of the property.
 </ParamField>
 
-<ParamField query="includedCities" type="array" >
-  Located in given cities. Example: includedCities[]=/cities/30953&includedCities[]=/cities/30952
+<ParamField query="includedCities" type="array">
+  Located in given cities. Example: includedCities\[]=/cities/30953\&includedCities\[]=/cities/30952
 </ParamField>
 
-<ParamField query="includedDepartments" type="array" >
-  Located in given departments. Example: includedDepartments[]=includedDepartments[]=/departments/77
+<ParamField query="includedDepartments" type="array">
+  Located in given departments. Example: includedDepartments\[]=includedDepartments\[]=/departments/77
 </ParamField>
 
 <ParamField query="includedInseeCodes" type="array">
-  Located in given insee codes. Example: includedInseeCodes[]=75117&includedInseeCodes[]=75118
+  Located in given insee codes. Example: includedInseeCodes\[]=75117\&includedInseeCodes\[]=75118
 </ParamField>
 
 <ParamField query="includedZipcodes" type="array">
-  Located in given zipcodes. Example: includedZipcodes[]=75017&includedZipcodes[]=75018
+  Located in given zipcodes. Example: includedZipcodes\[]=75017\&includedZipcodes\[]=75018
 </ParamField>
 
-<ParamField query="inventoryPriceMax" type="number" >
+<ParamField query="inventoryPriceMax" type="number">
   Lower than or equal to inventoryPriceMax. Example: inventoryPriceMax=500
 </ParamField>
 
-<ParamField query="inventoryPriceMin" type="number" >
+<ParamField query="inventoryPriceMin" type="number">
   Greater than or equal to inventoryPriceMin. Example: inventoryPriceMin=250
 </ParamField>
 
@@ -183,7 +183,7 @@ Date histogram granularity for time series. Can be `month` or `year`.
   The number of items per page. Max is 30.
 </ParamField>
 
-<ParamField query="lat" type="number" >
+<ParamField query="lat" type="number">
   Latitude. Used if radius & lat/lon are set. Example: lat=48.864716
 </ParamField>
 
@@ -191,15 +191,15 @@ Date histogram granularity for time series. Can be `month` or `year`.
   Longitude. Used if radius & lat/lon are given. Example: lon=2.349014
 </ParamField>
 
-<ParamField query="lotCountMax" type="integer" >
+<ParamField query="lotCountMax" type="integer">
   Lower than or equal to lotCountMax. Example: lotCountMax=12
 </ParamField>
 
-<ParamField query="lotCountMin" type="integer" >
+<ParamField query="lotCountMin" type="integer">
   Greater than or equal to lotCountMin. Example: lotCountMin=4
 </ParamField>
 
-<ParamField query="order[createdAt]" type="integer"  default="desc">
+<ParamField query="order[createdAt]" type="integer" default="desc">
   Order properties by creation date.
 </ParamField>
 
@@ -211,19 +211,19 @@ Date histogram granularity for time series. Can be `month` or `year`.
   The collection page number.
 </ParamField>
 
-<ParamField query="priceExcludingFeesMax" type="number" >
+<ParamField query="priceExcludingFeesMax" type="number">
   Lower than or equal to priceExcludingFeesMax. Example: priceExcludingFeesMax=427500
 </ParamField>
 
-<ParamField query="priceExcludingFeesMin" type="number" >
+<ParamField query="priceExcludingFeesMin" type="number">
   Greater than or equal to priceExcludingFeesMin. Example: priceExcludingFeesMin=405000
 </ParamField>
 
-<ParamField query="pricePerMeterMax" type="integer" >
+<ParamField query="pricePerMeterMax" type="integer">
   Lower than or equal to pricePerMeterMax. Example: pricePerMeterMax=11500
 </ParamField>
 
-<ParamField query="pricePerMeterMin" type="integer" >
+<ParamField query="pricePerMeterMin" type="integer">
   Greater than or equal to pricePerMeterMin. Example: pricePerMeterMin=9500
 </ParamField>
 
@@ -235,133 +235,128 @@ Date histogram granularity for time series. Can be `month` or `year`.
   0 : INDIVIDUAL, 1 : PROFESSIONAL
 </ParamField>
 
-<ParamField query="radius" type="integer" >
+<ParamField query="radius" type="integer">
   Distance expressed in kilometers. Used if lat & lon are set. Example: radius=20
 </ParamField>
 
-<ParamField query="rentalChargesMax" type="number" >
+<ParamField query="rentalChargesMax" type="number">
   Lower than or equal to rentalChargesMax. Example: rentalChargesMax=100
 </ParamField>
 
-<ParamField query="rentalChargesMin" type="number" >
+<ParamField query="rentalChargesMin" type="number">
   Greater than or equal to rentalChargesMin. Example: rentalChargesMin=50
 </ParamField>
 
-<ParamField query="rentalPledgeMax" type="number" >
+<ParamField query="rentalPledgeMax" type="number">
   Lower than or equal to rentalPledgeMax. Example: rentalPledgeMax=800
 </ParamField>
 
-<ParamField query="rentalPledgeMin" type="number" >
+<ParamField query="rentalPledgeMin" type="number">
   Greater than or equal to rentalPledgeMin. Example: rentalPledgeMin=500
 </ParamField>
 
-<ParamField query="renterFeesMax" type="number" >
+<ParamField query="renterFeesMax" type="number">
   Lower than or equal to renterFeesMax. Example: renterFeesMax=80
 </ParamField>
 
-<ParamField query="renterFeesMin" type="number" >
+<ParamField query="renterFeesMin" type="number">
   Greater than or equal to renterFeesMin. Example: renterFeesMin=50
 </ParamField>
 
-<ParamField query="roomMax" type="integer" >
+<ParamField query="roomMax" type="integer">
   Having maximum x rooms. Example: roomMax=6
 </ParamField>
 
-<ParamField query="roomMin" type="integer" >
+<ParamField query="roomMin" type="integer">
   Having minimum x rooms. Example: roomMin=3
 </ParamField>
 
-<ParamField query="sortMode" type="string"  default="property">
+<ParamField query="sortMode" type="string" default="property">
   Property: fromDate/toDate criteria will be applied to property root object. Items will be sorted by property createdAt dates. Advert: fromDate/toDate criteria will be applied to adverts nested objects. Items will be sorted by advert createdAt dates. Example: sortMode=property
 </ParamField>
 
-<ParamField query="surfaceMax" type="integer" >
+<ParamField query="surfaceMax" type="integer">
   Lower than or equal to surfaceMax. Example: surfaceMax=84
 </ParamField>
 
-<ParamField query="surfaceMin" type="integer" >
+<ParamField query="surfaceMin" type="integer">
   Greater than or equal to surfaceMin. Example: surfaceMin=42
 </ParamField>
 
-<ParamField query="toDate" type="date" >
+<ParamField query="toDate" type="date">
   To datetime (inclusive). Example: toDate=2021-05-07 12:42:42
 </ParamField>
 
-<ParamField query="toUpdatedAt" type="date" >
+<ParamField query="toUpdatedAt" type="date">
   Since datetime (inclusive). Example: toUpdatedAt=2021-05-07 12:42:42
 </ParamField>
 
-<ParamField query="transactionType" type="integer" >
+<ParamField query="transactionType" type="integer">
   0 : SELL, 1 : RENT
 </ParamField>
 
-<ParamField query="withCoherentPrice" type="boolean"  default="true">
+<ParamField query="withCoherentPrice" type="boolean" default="true">
   Filter properties with coherent price. Example: withCoherentPrice=true
 </ParamField>
 
-<ParamField query="withVirtualTour" type="boolean" >
+<ParamField query="withVirtualTour" type="boolean">
   Having a virtual tour video link. Example: withVirtualTour=true
 </ParamField>
 
-
 <RequestExample>
-
-```bash Example Request
-curl --location -g --request GET 'https://api.notif.immo/indicators/price_per_meter?includedDepartments[]=departments/77&fromDate=2020-01-10&propertyTypes[]=1&transactionType=0&withCoherentPrice=true&budgetMin=1800000&budgetMax=1900000' \
---header 'Content-Type: application/json' \
---header 'X-API-KEY: <api_key>'
-```
-
+  ```bash Example Request
+  curl --location -g --request GET 'https://api.stream.estate/indicators/price_per_meter?includedDepartments[]=departments/77&fromDate=2020-01-10&propertyTypes[]=1&transactionType=0&withCoherentPrice=true&budgetMin=1800000&budgetMax=1900000' \
+  --header 'Content-Type: application/json' \
+  --header 'X-API-KEY: <api_key>'
+  ```
 </RequestExample>
 
 <ResponseExample>
-
-```json Example Response
-{
-  "hydra:member": [
-    {
-    "average": 7532.48,
-    "average_min": 6250.75,
-    "average_max": 8814.21,
-    "median": 7601.50,
-    "series": {
-        "2023-01": 7450.60,
-        "2023-02": 7520.00,
-        "2023-03": 7605.30,
-        "2023-04": 7680.40,
-        "2023-05": 7750.50,
-        "2023-06": 7820.60,
-        "2023-07": 7890.70,
-        "2023-08": 7960.80,
-        "2023-09": 8030.90,
-        "2023-10": 8101.00,
-        "2023-11": 8171.10,
-        "2023-12": 8241.20
-    }
-}
-  ],
-  "hydra:totalItems": 0,
-  "hydra:view": {
-    "@id": "string",
-    "@type": "string",
-    "hydra:first": "string",
-    "hydra:last": "string",
-    "hydra:next": "string"
-  },
-  "hydra:search": {
-    "@type": "string",
-    "hydra:template": "string",
-    "hydra:variableRepresentation": "string",
-    "hydra:mapping": [
+  ```json Example Response
+  {
+    "hydra:member": [
       {
-        "@type": "string",
-        "variable": "string",
-        "property": "string",
-        "required": true
+      "average": 7532.48,
+      "average_min": 6250.75,
+      "average_max": 8814.21,
+      "median": 7601.50,
+      "series": {
+          "2023-01": 7450.60,
+          "2023-02": 7520.00,
+          "2023-03": 7605.30,
+          "2023-04": 7680.40,
+          "2023-05": 7750.50,
+          "2023-06": 7820.60,
+          "2023-07": 7890.70,
+          "2023-08": 7960.80,
+          "2023-09": 8030.90,
+          "2023-10": 8101.00,
+          "2023-11": 8171.10,
+          "2023-12": 8241.20
       }
-    ]
   }
-}
-```
-
+    ],
+    "hydra:totalItems": 0,
+    "hydra:view": {
+      "@id": "string",
+      "@type": "string",
+      "hydra:first": "string",
+      "hydra:last": "string",
+      "hydra:next": "string"
+    },
+    "hydra:search": {
+      "@type": "string",
+      "hydra:template": "string",
+      "hydra:variableRepresentation": "string",
+      "hydra:mapping": [
+        {
+          "@type": "string",
+          "variable": "string",
+          "property": "string",
+          "required": true
+        }
+      ]
+    }
+  }
+  ```
 </ResponseExample>

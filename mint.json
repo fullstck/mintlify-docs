@@ -1,10 +1,10 @@
 {
   "name": "Stream Estate API Documentation",
   "logo": {
-    "dark": "/logo/stream_dark.png",
-    "light": "/logo/stream_light.png"
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#000000",
     "light": "#000000",

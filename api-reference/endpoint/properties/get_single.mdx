@@ -1,0 +1,213 @@
+---
+title: "Property"
+api: "GET /documents/properties/{id}"
+description: "Returns a single property matching the given id."
+---
+
+### Path parameters
+
+<ParamField path="id" type="string" required>
+  UUID of the selected property
+</ParamField>
+
+
+<RequestExample>
+
+```bash Example Request
+curl --location -g --request GET 'https://api.notif.immo/documents/properties/{id}' \
+--header 'Content-Type: application/json' \
+--header 'X-API-KEY: <api_key>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Example Response
+{
+  "@context": "/contexts/PropertyDocument",
+  "@id": "/documents/properties/{id}",
+  "@type": "PropertyDocument",
+  "adverts": [
+    {
+      "condominiumFees": 1200,
+      "constructionYear": 1982,
+      "contact": {
+        "agency": "Agence Immo 2000",
+        "email": "contact@agenceimmo2000.fr",
+        "fax": "0120304050",
+        "name": "Olivie Olivier",
+        "phone": "0120304050",
+        "reference": "B42042"
+      },
+      "createdAt": "2023-05-24T09:29:17+02:00",
+      "description": "Bel appartement « coup de coeur » 2 pieces Sans perte d’espace, lumineux, poutres, parquet massif, belle hauteur sous plafonds, entièrement refait à neuf avec fenêtres double vitrage, volets roulants, porte blindée, cuisine entièrement équipée, salle d’eau avec fenêtre, idéalement situé...",
+      "elevator": true,
+      "energy": {
+        "category": "C",
+        "value": 117
+      },
+      "events": [
+        {
+          "createdAt": "2023-05-24T09:29:17+02:00",
+          "fieldName": "price",
+          "fieldNewValue": "950",
+          "fieldOldValue": "995",
+          "percentVariation": -4.52
+        }
+      ],
+      "features": [
+        "Grand balcon",
+        "Bâtiment de 5 étages",
+        "Lumineux",
+        "Coin cuisine"
+      ],
+      "feesPercentage": 10,
+      "feesResponsibility": 0,
+      "floor": 6,
+      "floorQuantity": 6,
+      "furnished": true,
+      "greenHouseGas": {
+        "category": "D",
+        "value": 32
+      },
+      "inventoryPrice": 350,
+      "landSurface": 300,
+      "lastCrawledAt": "2023-05-24T09:29:17+02:00",
+      "lotCount": 12,
+      "pictures": [
+        "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
+        "https://pictures.notif.immo/properties/2021/05/10/10/b0935cb714d501c668b66997d7f16a.jpg",
+        "https://pictures.notif.immo/properties/2021/05/10/10/7e1ea590d4b827e9a8a762e7f378fb.jpg"
+      ],
+      "picturesRemote": [
+        "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_45D57CD0-7D18-4FA0-B463-060789202625.jpg",
+        "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_39192DB9-A503-4FD7-AEDB-3DEFFE35E42E.jpg",
+        "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_FDDEC9E3-8A85-4BE5-83B8-12005A2D4078.jpg"
+      ],
+      "price": 950,
+      "priceExcludingFees": 1800000,
+      "publisher": {
+        "category": "Portails",
+        "name": "Century21",
+        "type": 1
+      },
+      "rentalCharges": 75,
+      "rentalPledge": 1000,
+      "renterFees": 60,
+      "surface": 30,
+      "title": "Appartement 2 pieces",
+      "updatedAt": "2023-05-24T09:29:17+02:00",
+      "url": "https://www.century21.fr/trouver_logement/detail/2424196788/",
+      "uuid": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
+      "virtualTour": "https://my.matterport.com/show/?m=9GnMTmZgY44"
+    }
+  ],
+  "bedroom": 2,
+  "city": {
+    "cityParentId": 0,
+    "country": {
+      "code": "250",
+      "id": 2,
+      "name": "France"
+    },
+    "department": {
+      "code": "75",
+      "id": 77,
+      "name": "Paris"
+    },
+    "groupedCityNames": [
+      "string"
+    ],
+    "groupedCityZipcodes": [
+      "string"
+    ],
+    "hasGroupedByName": false,
+    "hasGroupedByZipcode": false,
+    "id": 30950,
+    "insee": "75116",
+    "locations": {
+      "lat": 48.8530933,
+      "lon": 2.2487626
+    },
+    "name": "Paris 18e",
+    "open": true,
+    "originalName": "Paris 18e",
+    "region": {
+      "code": "11",
+      "id": 7,
+      "name": "Île-de-France"
+    },
+    "zipcode": "75018"
+  },
+  "createdAt": "2023-05-24T09:29:17+02:00",
+  "description": "Bel appartement « coup de coeur » 2 pieces Sans perte d’espace, lumineux, poutres, parquet massif, belle hauteur sous plafonds, entièrement refait à neuf avec fenêtres double vitrage, volets roulants, porte blindée, cuisine entièrement équipée, salle d’eau avec fenêtre, idéalement situé...",
+  "elevator": true,
+  "expired": true,
+  "expiredAt": "2023-05-24T09:29:17+02:00",
+  "floor": 6,
+  "furnished": true,
+  "landSurface": 300,
+  "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
+  "lastCrawledAt": "2023-05-24T09:29:17+02:00",
+  "locations": {
+    "lat": 48.8530933,
+    "lon": 2.2487626
+  },
+  "pictures": [
+    "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
+    "https://pictures.notif.immo/properties/2021/05/10/10/b0935cb714d501c668b66997d7f16a.jpg",
+    "https://pictures.notif.immo/properties/2021/05/10/10/7e1ea590d4b827e9a8a762e7f378fb.jpg"
+  ],
+  "price": 950,
+  "pricePerMeter": 31.66,
+  "property": "/properties/a2fe8869-bbd8-4d92-ad22-5ca5511a5bc7",
+  "propertyType": 0,
+  "publisherTypes": [
+    1
+  ],
+  "room": 3,
+  "stations": [
+    {
+      "id": 33,
+      "lines": [
+        {
+          "color": "#128B5B",
+          "id": 20,
+          "name": "Ligne 12",
+          "number": "12",
+          "routeName": "Front Populaire ↔ Mairie d’Issy"
+        }
+      ],
+      "name": "Jules Joffrin"
+    },
+    {
+      "id": 191,
+      "lines": [
+        {
+          "color": "#B94D9A",
+          "id": 11,
+          "name": "Ligne 4",
+          "number": "4",
+          "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+        },
+        {
+          "color": "#128B5B",
+          "id": 20,
+          "name": "Ligne 12",
+          "number": "12",
+          "routeName": "Front Populaire ↔ Mairie d’Issy"
+        }
+      ],
+      "name": "Marcadet-Poissonniers"
+    }
+  ],
+  "surface": 30,
+  "title": "Appartement 2 pieces",
+  "transactionType": 1,
+  "updatedAt": "2023-05-24T09:29:17+02:00",
+  "uuid": "38cb65b9-2965-4bd0-bc9b-2b8a8be7c457"
+}
+```
+
+</ResponseExample>

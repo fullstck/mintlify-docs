@@ -1,0 +1,465 @@
+---
+title: "Simulate"
+api: "GET /webhook-tester"
+description: "This endpoint will simulate a `match` or an `event` to the given endpoint."
+---
+<Note>
+Please read our [Concepts](https://docs.stream.estate/concepts) to understand the differences between a `property`, a `match`, an `advert` and an `event`.
+</Note>
+
+<Tip>
+If you want to receive new `properties` that meet your search criteria in real time, you need to provide on [POST /searches](http://docs.stream.estate/api-reference/endpoint/searches/create):
+* an `endpointRecipient`
+* set the `notificationEnabled` parameter to `true`
+</Tip>
+
+<Tip>
+If you want to receive new `events` in real time you need to provide on [POST /searches](http://docs.stream.estate/api-reference/endpoint/searches/create):
+* an `eventEndpoint`
+* set the `notificationEnabled` parameter to `true`
+* set the events you want to subscribe to using the `subscribedEvents` parameter. All types of events are listed below this section.
+</Tip>
+
+<Warning>
+Restricting your endpoints to our IP addresses is highly recommended for security reasons:
++ Sandbox: `178.238.226.136`
++ Production: `144.76.91.183`
+
+Your server implementation should return a `200` HTTP status code if the data was received successfully. If a webhook fails, it will be retried up to five times. Every retry will take place 1 hour after the previous one.
+</Warning>
+
+| Events              | Description                                                  |
+|--------------------|--------------------------------------------------------------|
+| `ad.update.price`  | Notifies you when the price of an advert changes.       |
+| `ad.update.surface`| Notifies you when the surface area of an advert changes.|
+| `ad.update.pictures`| Notifies you when the pictures of an advert are updated.|
+| `ad.update.expired`| Notifies you when an advert has expired.
+| `property.ad.create` | Notifies you when a new advert is created. |
+| `property.ad.update` | Notifies you when an existing advert is updated. |                   |
+
+
+
+### Path
+
+<ParamField query="endpoint" type="url" required placeholder="https://hook.eu1.make.com/...">
+  Endpoint where the match or the event will be sent to.
+</ParamField>
+
+<ParamField query="eventType" type="string" required placeholder="ad.update.price">
+  The type of event you want to trigger.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.stream.estate/webhook-tester' \
+--header 'Content-Type: application/json' \
+--header 'X-API-KEY: <api_key>' \
+```
+</RequestExample>
+
+<ResponseExample>
+```json Example Event Webhook
+{
+  "event": "ad.update.price",
+  "adEvent": {
+    "fieldName": "price",
+    "fieldOldValue": "900",
+    "fieldNewValue": "875",
+    "percentVariation": "-2.81",
+    "createdAt": "2019-08-24T14:15:22Z"
+  },
+  "match": {
+    "@context": "string",
+    "@id": "string",
+    "@type": "string",
+    "property": "string",
+    "search": "string",
+    "createdAt": "2019-08-24T14:15:22Z",
+    "updatedAt": "2019-08-24T14:15:22Z",
+    "propertyDocument": {
+      "@context": "/contexts/PropertyDocument",
+      "@id": "/documents/properties/a2fe8869-bbd8-4d92-ad22-5ca5511a5bc7",
+      "@type": "PropertyDocument",
+      "adverts": [
+        {
+          "contact": {
+            "agency": "Agence Immo 2000",
+            "email": "contact@agenceimmo2000.fr",
+            "fax": "0120304050",
+            "name": "Olivie Olivier",
+            "phone": "0120304050",
+            "reference": "B42042"
+          },
+          "createdAt": "2024-03-26T10:39:41+01:00",
+          "description": "Bel appartement « coup de coeur » 2 pieces Sans perte d’espace, lumineux, poutres, parquet massif, belle hauteur sous plafonds, entièrement refait à neuf avec fenêtres double vitrage, volets roulants, porte blindée, cuisine entièrement équipée, salle d’eau avec fenêtre, idéalement situé...",
+          "elevator": true,
+          "events": [
+            {
+              "createdAt": "2024-03-26T10:39:41+01:00",
+              "fieldName": "price",
+              "fieldNewValue": "950",
+              "fieldOldValue": "995",
+              "percentVariation": -4.52
+            }
+          ],
+          "features": [
+            "Grand balcon",
+            "Bâtiment de 5 étages",
+            "Lumineux",
+            "Coin cuisine"
+          ],
+          "energy": {
+            "category": "C",
+            "value": 117
+          },
+          "greenHouseGas": {
+            "category": "D",
+            "value": 32
+          },
+          "constructionYear": 1982,
+          "floorQuantity": 6,
+          "renterFees": 60,
+          "rentalPledge": 1000,
+          "inventoryPrice": 350,
+          "rentalCharges": 75,
+          "feesPercentage": 10,
+          "priceExcludingFees": 1800000,
+          "feesResponsibility": 0,
+          "lotCount": 12,
+          "condominiumFees": 1200,
+          "floor": 6,
+          "furnished": true,
+          "lastCrawledAt": "2024-03-26T10:39:41+01:00",
+          "publisher": {
+            "category": "Portails",
+            "name": "Century21",
+            "type": 1
+          },
+          "surface": 30,
+          "landSurface": 300,
+          "pictures": [
+            "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
+            "https://pictures.notif.immo/properties/2021/05/10/10/b0935cb714d501c668b66997d7f16a.jpg",
+            "https://pictures.notif.immo/properties/2021/05/10/10/7e1ea590d4b827e9a8a762e7f378fb.jpg"
+          ],
+          "picturesRemote": [
+            "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_45D57CD0-7D18-4FA0-B463-060789202625.jpg",
+            "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_39192DB9-A503-4FD7-AEDB-3DEFFE35E42E.jpg",
+            "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_FDDEC9E3-8A85-4BE5-83B8-12005A2D4078.jpg"
+          ],
+          "price": 950,
+          "title": "Appartement 2 pieces",
+          "updatedAt": "2024-03-26T10:39:41+01:00",
+          "url": "https://www.century21.fr/trouver_logement/detail/2424196788/",
+          "uuid": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
+          "virtualTour": "https://my.matterport.com/show/?m=9GnMTmZgY44"
+        }
+      ],
+      "bedroom": 2,
+      "city": {
+        "cityParentId": 0,
+        "country": {
+          "code": "250",
+          "id": 2,
+          "name": "France"
+        },
+        "department": {
+          "code": "75",
+          "id": 77,
+          "name": "Paris"
+        },
+        "groupedCityNames": [
+          "string"
+        ],
+        "groupedCityZipcodes": [
+          "string"
+        ],
+        "hasGroupedByName": false,
+        "hasGroupedByZipcode": false,
+        "id": 30950,
+        "insee": "75116",
+        "location": {
+          "lat": 48.8530933,
+          "lon": 2.2487626
+        },
+        "name": "Paris 18e",
+        "open": true,
+        "originalName": "Paris 18e",
+        "region": {
+          "code": "11",
+          "id": 7,
+          "name": "Île-de-France"
+        },
+        "zipcode": "75018"
+      },
+      "createdAt": "2024-03-26T10:39:41+01:00",
+      "description": "Bel appartement « coup de coeur » 2 pieces Sans perte d’espace, lumineux, poutres, parquet massif, belle hauteur sous plafonds, entièrement refait à neuf avec fenêtres double vitrage, volets roulants, porte blindée, cuisine entièrement équipée, salle d’eau avec fenêtre, idéalement situé...",
+      "elevator": true,
+      "expired": true,
+      "expiredAt": "2024-03-26T10:39:41+01:00",
+      "floor": 6,
+      "furnished": true,
+      "landSurface": 300,
+      "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
+      "lastCrawledAt": "2024-03-26T10:39:41+01:00",
+      "locations": {
+        "lat": 48.8530933,
+        "lon": 2.2487626
+      },
+      "pictures": [
+        "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
+        "https://pictures.notif.immo/properties/2021/05/10/10/b0935cb714d501c668b66997d7f16a.jpg",
+        "https://pictures.notif.immo/properties/2021/05/10/10/7e1ea590d4b827e9a8a762e7f378fb.jpg"
+      ],
+      "price": 950,
+      "pricePerMeter": 31.66,
+      "property": "/properties/a2fe8869-bbd8-4d92-ad22-5ca5511a5bc7",
+      "propertyType": 0,
+      "publisherTypes": [
+        1
+      ],
+      "room": 3,
+      "stations": [
+        {
+          "id": 33,
+          "lines": [
+            {
+              "color": "#128B5B",
+              "id": 20,
+              "name": "Ligne 12",
+              "number": "12",
+              "routeName": "Front Populaire ↔ Mairie d'Issy"
+            }
+          ],
+          "name": "Jules Joffrin"
+        },
+        {
+          "id": 191,
+          "lines": [
+            {
+              "color": "#B94D9A",
+              "id": 11,
+              "name": "Ligne 4",
+              "number": "4",
+              "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+            },
+            {
+              "color": "#128B5B",
+              "id": 20,
+              "name": "Ligne 12",
+              "number": "12",
+              "routeName": "Front Populaire ↔ Mairie d'Issy"
+            }
+          ],
+          "name": "Marcadet-Poissonniers"
+        }
+      ],
+      "surface": 30,
+      "title": "Appartement 2 pieces",
+      "transactionType": 1,
+      "updatedAt": "2024-03-26T10:39:41+01:00",
+      "uuid": "38cb65b9-2965-4bd0-bc9b-2b8a8be7c457"
+    }
+  }
+}
+```
+</ResponseExample>
+
+<ResponseExample>
+```json Example Match Webhook
+{
+  "@context": "string",
+  "@id": "string",
+  "@type": "string",
+  "property": "string",
+  "search": "string",
+  "createdAt": "2019-08-24T14:15:22Z",
+  "updatedAt": "2019-08-24T14:15:22Z",
+  "propertyDocument": {
+    "@context": "/contexts/PropertyDocument",
+    "@id": "/documents/properties/a2fe8869-bbd8-4d92-ad22-5ca5511a5bc7",
+    "@type": "PropertyDocument",
+    "adverts": [
+      {
+        "contact": {
+          "agency": "Agence Immo 2000",
+          "email": "contact@agenceimmo2000.fr",
+          "fax": "0120304050",
+          "name": "Olivie Olivier",
+          "phone": "0120304050",
+          "reference": "B42042"
+        },
+        "createdAt": "2024-02-20T14:50:32+01:00",
+        "description": "Bel appartement « coup de coeur » 2 pieces Sans perte d'espace, lumineux, poutres, parquet massif, belle hauteur sous plafonds, entièrement refait à neuf avec fenêtres double vitrage, volets roulants, porte blindée, cuisine entièrement équipée, salle d'eau avec fenêtre, idéalement situé...",
+        "elevator": true,
+        "events": [
+          {
+            "createdAt": "2024-02-20T14:50:32+01:00",
+            "fieldName": "price",
+            "fieldNewValue": "950",
+            "fieldOldValue": "995",
+            "percentVariation": -4.52
+          }
+        ],
+        "features": [
+          "Grand balcon",
+          "Bâtiment de 5 étages",
+          "Lumineux",
+          "Coin cuisine"
+        ],
+        "energy": {
+          "category": "C",
+          "value": 117
+        },
+        "greenHouseGas": {
+          "category": "D",
+          "value": 32
+        },
+        "constructionYear": 1982,
+        "floorQuantity": 6,
+        "renterFees": 60,
+        "rentalPledge": 1000,
+        "inventoryPrice": 350,
+        "rentalCharges": 75,
+        "feesPercentage": 10,
+        "priceExcludingFees": 1800000,
+        "feesResponsibility": 0,
+        "lotCount": 12,
+        "condominiumFees": 1200,
+        "floor": 6,
+        "furnished": true,
+        "lastCrawledAt": "2024-02-20T14:50:32+01:00",
+        "publisher": {
+          "category": "Portails",
+          "name": "Century21",
+          "type": 1
+        },
+        "surface": 30,
+        "landSurface": 300,
+        "pictures": [
+          "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
+          "https://pictures.notif.immo/properties/2021/05/10/10/b0935cb714d501c668b66997d7f16a.jpg",
+          "https://pictures.notif.immo/properties/2021/05/10/10/7e1ea590d4b827e9a8a762e7f378fb.jpg"
+        ],
+        "picturesRemote": [
+          "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_45D57CD0-7D18-4FA0-B463-060789202625.jpg",
+          "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_39192DB9-A503-4FD7-AEDB-3DEFFE35E42E.jpg",
+          "https://www.century21.fr/imagesBien/s3/202/3427/c21_202_3427_1185_1_FDDEC9E3-8A85-4BE5-83B8-12005A2D4078.jpg"
+        ],
+        "price": 950,
+        "title": "Appartement 2 pieces",
+        "updatedAt": "2024-02-20T14:50:32+01:00",
+        "url": "https://www.century21.fr/trouver_logement/detail/2424196788/",
+        "uuid": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
+        "virtualTour": "https://my.matterport.com/show/?m=9GnMTmZgY44"
+      }
+    ],
+    "bedroom": 2,
+    "city": {
+      "cityParentId": 0,
+      "country": {
+        "code": "250",
+        "id": 2,
+        "name": "France"
+      },
+      "department": {
+        "code": "75",
+        "id": 77,
+        "name": "Paris"
+      },
+      "groupedCityNames": [
+        "string"
+      ],
+      "groupedCityZipcodes": [
+        "string"
+      ],
+      "hasGroupedByName": false,
+      "hasGroupedByZipcode": false,
+      "id": 30950,
+      "insee": "75116",
+      "location": {
+        "lat": 48.8530933,
+        "lon": 2.2487626
+      },
+      "name": "Paris 18e",
+      "open": true,
+      "originalName": "Paris 18e",
+      "region": {
+        "code": "11",
+        "id": 7,
+        "name": "Île-de-France"
+      },
+      "zipcode": "75018"
+    },
+    "createdAt": "2024-02-20T14:50:32+01:00",
+    "description": "Bel appartement « coup de coeur » 2 pieces Sans perte d’espace, lumineux, poutres, parquet massif, belle hauteur sous plafonds, entièrement refait à neuf avec fenêtres double vitrage, volets roulants, porte blindée, cuisine entièrement équipée, salle d’eau avec fenêtre, idéalement situé...",
+    "elevator": true,
+    "expired": true,
+    "expiredAt": "2024-02-20T14:50:32+01:00",
+    "floor": 6,
+    "furnished": true,
+    "landSurface": 300,
+    "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
+    "lastCrawledAt": "2024-02-20T14:50:32+01:00",
+    "locations": {
+      "lat": 48.8530933,
+      "lon": 2.2487626
+    },
+    "pictures": [
+      "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
+      "https://pictures.notif.immo/properties/2021/05/10/10/b0935cb714d501c668b66997d7f16a.jpg",
+      "https://pictures.notif.immo/properties/2021/05/10/10/7e1ea590d4b827e9a8a762e7f378fb.jpg"
+    ],
+    "price": 950,
+    "pricePerMeter": 31.66,
+    "property": "/properties/a2fe8869-bbd8-4d92-ad22-5ca5511a5bc7",
+    "propertyType": 0,
+    "publisherTypes": [
+      1
+    ],
+    "room": 3,
+    "stations": [
+      {
+        "id": 33,
+        "lines": [
+          {
+            "color": "#128B5B",
+            "id": 20,
+            "name": "Ligne 12",
+            "number": "12",
+            "routeName": "Front Populaire ↔ Mairie d'Issy"
+          }
+        ],
+        "name": "Jules Joffrin"
+      },
+      {
+        "id": 191,
+        "lines": [
+          {
+            "color": "#B94D9A",
+            "id": 11,
+            "name": "Ligne 4",
+            "number": "4",
+            "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+          },
+          {
+            "color": "#128B5B",
+            "id": 20,
+            "name": "Ligne 12",
+            "number": "12",
+            "routeName": "Front Populaire ↔ Mairie d'Issy"
+          }
+        ],
+        "name": "Marcadet-Poissonniers"
+      }
+    ],
+    "surface": 30,
+    "title": "Appartement 2 pieces",
+    "transactionType": 1,
+    "updatedAt": "2024-02-20T14:50:32+01:00",
+    "uuid": "38cb65b9-2965-4bd0-bc9b-2b8a8be7c457"
+  }
+}
+```
+</ResponseExample>

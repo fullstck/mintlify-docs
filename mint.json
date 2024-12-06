@@ -6,7 +6,11 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#d97706"    
+    "primary": "#d97706",
+    "background": {
+    "dark": "#1d1f27",
+    "light": "#EEEFE9"
+    }
   },
   "api": {
     "baseUrl": "https://api.stream.estate",

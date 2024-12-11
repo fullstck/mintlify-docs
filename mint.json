@@ -7,7 +7,7 @@
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#ffffff",
-    "light": "#000000",
+    "light": "#ffffff",
     "dark": "#ffffff",
     "background": {
     "dark": "#1d1f27",

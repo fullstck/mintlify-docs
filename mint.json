@@ -62,7 +62,8 @@
       "pages": [
         "api-reference/endpoint/indicators/price_per_meter",
         "api-reference/endpoint/indicators/points_of_interest",
-        "api-reference/endpoint/indicators/locations"
+        "api-reference/endpoint/indicators/locations",
+        "api-reference/endpoint/indicators/cities"
       ]
     },
     {

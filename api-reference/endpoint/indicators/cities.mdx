@@ -1,0 +1,105 @@
+---
+title: "Cities"
+api: "GET /cities"
+description: "This endpoint returns cities matching the given criteria."
+---
+
+### Query parameters
+<ParamField query="excludeGroupedCities" type="boolean" default="false">
+ Set to true to exclude cities that have grouped cities under them.
+ Example: `excludeGroupedCities=true`
+</ParamField>
+
+<ParamField query="insee" type="string">
+ Filter by INSEE code.
+</ParamField>
+
+<ParamField query="insee[]" type="array of strings">
+ Filter by multiple INSEE codes.
+</ParamField>
+
+<ParamField query="libelle" type="string">
+ Filter by city label/display name.
+</ParamField>
+
+<ParamField query="name" type="string">
+ Filter by city name.
+</ParamField>
+
+<ParamField query="order[name]" type="string" default="asc">
+ Sort by name.
+ Enum: `"asc"` `"desc"`
+</ParamField>
+
+<ParamField query="page" type="integer" default="1">
+ The collection page number.
+</ParamField>
+
+<ParamField query="slug" type="string">
+ Filter by city slug.
+</ParamField>
+
+<ParamField query="zipcode" type="string">
+ Filter by zipcode.
+</ParamField>
+
+<ParamField query="zipcode[]" type="array of strings">
+ Filter by multiple zipcodes.
+</ParamField>
+
+<RequestExample>
+```bash Example Request
+curl --location -g --request GET 'https://api.stream.estate/cities' \
+--header 'Content-Type: application/json'
+--header 'X-API-KEY:'
+```
+<ResponseExample>
+
+```json Example Response
+{
+  "hydra:member": [
+    {
+            "@id": "/cities/1",
+            "@type": "City",
+            "zipcode": "01500",
+            "insee": "01004",
+            "article": "",
+            "name": "Ambérieu-en-Bugey",
+            "libelle": "AMBERIEU EN BUGEY",
+            "department": "/departments/1",
+            "cityParent": {
+                "@id": "/cities/37152",
+                "@type": "City",
+                "zipcode": "01500",
+                "insee": "01004",
+                "article": "",
+                "name": null,
+                "libelle": null
+            },
+            "originalName": "Ambérieu-en-Bugey"
+        },
+        {
+            "@id": "/cities/2",
+            "@type": "City",
+            "zipcode": "01330",
+            "insee": "01005",
+            "article": "",
+            "name": "Ambérieux-en-Dombes",
+            "libelle": "AMBERIEUX EN DOMBES",
+            "department": "/departments/1",
+            "cityParent": {
+                "@id": "/cities/37153",
+                "@type": "City",
+                "zipcode": "01330",
+                "insee": "01005",
+                "article": "",
+                "name": null,
+                "libelle": null
+            },
+            "originalName": "Ambérieux-en-Dombes"
+        }
+  ]
+}
+```
+
+</ResponseExample>

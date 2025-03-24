@@ -18,6 +18,11 @@ description: "This endpoint returns cities matching the given criteria."
  Filter by multiple INSEE codes.
 </ParamField>
 
+<ParamField query="polygon" type="string">
+ Filter by cities inside a given polygon defined by GPS coordinates.
+ Example: `Example: polygon=polygon[0][lat]=43.12&polygon[0][lon]=5.93&polygon[1][lat]=43.12&polygon[1][lon]=6.01&polygon[2][lat]=43.07&polygon[2][lon]=6.01&polygon[3][lat]=43.07&polygon[3][lon]=5.93`
+</ParamField>
+
 <ParamField query="libelle" type="string">
  Filter by city label/display name.
 </ParamField>

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Stream Estate API Documentation",
+  "colors": {
+    "primary": "#1d1f27",
+    "light": "#ffffff",
+    "dark": "#1d1f27"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "anchors": [
+      {
+        "anchor": "Documentation",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Welcome",
+            "pages": [
+              "introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "API Reference",
+        "icon": "rectangle-terminal",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "api-reference/concepts",
+              "api-reference/authentication",
+              "api-reference/errors",
+              "api-reference/faq"
+            ]
+          },
+          {
+            "group": "Properties",
+            "pages": [
+              "api-reference/endpoint/properties/get_collection",
+              "api-reference/endpoint/properties/get_single",
+              "api-reference/endpoint/properties/get_similar"
+            ]
+          },
+          {
+            "group": "Indicators",
+            "pages": [
+              "api-reference/endpoint/indicators/price_per_meter",
+              "api-reference/endpoint/indicators/points_of_interest",
+              "api-reference/endpoint/indicators/locations",
+              "api-reference/endpoint/indicators/cities"
+            ]
+          },
+          {
+            "group": "Searches",
+            "pages": [
+              "api-reference/endpoint/searches/get_collection",
+              "api-reference/endpoint/searches/get_single",
+              "api-reference/endpoint/searches/create",
+              "api-reference/endpoint/searches/update",
+              "api-reference/endpoint/searches/delete"
+            ]
+          },
+          {
+            "group": "Webhooks",
+            "pages": [
+              "api-reference/endpoint/webhooks/send"
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "Changelog",
+        "href": "https://verdant-strand-46f.notion.site/8b657e7b964840abac80acd5afbb683e",
+        "icon": "list"
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "api": {
+    "mdx": {
+      "server": "https://api.stream.estate",
+      "auth": {
+        "method": "key",
+        "name": "X-API-KEY"
+      }
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#EEEFE9",
+      "dark": "#1d1f27"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://stream.estate"
+    }
+  }
+}

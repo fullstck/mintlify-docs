@@ -59,7 +59,8 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
 </RequestExample>
 
 <ResponseExample>
-```json Example Event Webhook
+
+```json Event
 {
   "event": "ad.update.price",
   "adEvent": {
@@ -264,10 +265,8 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
   }
 }
 ```
-</ResponseExample>
 
-<ResponseExample>
-```json Example Match Webhook
+```json Match
 {
   "@context": "string",
   "@id": "string",
@@ -462,4 +461,5 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
   }
 }
 ```
+
 </ResponseExample>

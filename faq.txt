@@ -2,5 +2,9 @@
 
 Pour nous contacter, envoyez un e-mail directement depuis ce chat avec votre demande. Nous vous répondrons en vous proposant un rendez-vous adapté.
 
+### Qu'entendez vous par facturation à l'item ?
 
+Pour clarifier notre modèle de facturation, un "item" correspond, par exemple dans le cadre de l'endpoint "/properties", à une propriété immobilière unique. Ainsi, même si une property contient plusieurs adverts (par exemple, 7 annonces différentes pour une seule et même propriété), elle sera toujours comptée comme un seul et unique item. Il en va de même pour les webhooks. 
+
+Pour les autres endpoints, comme Price/Meter Evolution ou Points of Interests, chaque réponse HTTP 200 contenant les données demandées est comptabilisée comme un seul item.
 

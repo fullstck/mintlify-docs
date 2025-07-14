@@ -72,7 +72,7 @@
       },
       {
         "anchor": "Changelog",
-        "href": "https://docs.stream.estate/changelog",
+        "pages": ["changelog"],
         "icon": "clock"
       }
     ]

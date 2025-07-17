@@ -6,6 +6,14 @@ description: "Returns a collection of properties matching given criteria."
 
 ### Query parameters
 
+<ParamField query="advertPriceMin" type="number">
+  Minimum price of advert. Filters on advert price, not on property price. Only non-expired adverts are considered.
+</ParamField>
+
+<ParamField query="advertPriceMax" type="number">
+  Maximum price of advert. Filters on advert price, not on property price. Only non-expired adverts are considered.
+</ParamField>
+
 <ParamField query="bedroomMax" type="number">
   Maximum number of bedrooms in the property.
 </ParamField>

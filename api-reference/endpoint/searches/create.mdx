@@ -6,18 +6,27 @@ description: "Creates a new search"
 
 ### Body
 
-<ParamField body="bedroomMin" type="integer">
+<ParamField body="advertPriceMin" type="number">
+  Minimum price of advert. Filters properties based on any non expired adverts prices.
+</ParamField>
+
+<ParamField body="advertPriceMax" type="number">
+  Maximum price of advert. Filters properties based on any non expired adverts prices.
+</ParamField>
+
+<ParamField body="bedroomMin" type="number">
   Minimum number of bedrooms in the property.
 </ParamField>
 
-<ParamField body="bedroomMin" type="integer">
+<ParamField body="bedroomMin" type="number">
   Minimum number of bedrooms in the property.
 </ParamField>
 
 <ParamField body="budgetMax" type="number" >
   Maximum budget for the property.
 </ParamField>
-<ParamField body="budgetMin" type="integer">
+
+<ParamField body="budgetMin" type="number">
   Minimum budget for the property.
 </ParamField>
 
@@ -50,11 +59,11 @@ description: "Creates a new search"
   Whether the property is furnished or not.
 </ParamField>
 
-<ParamField query="geoAccuracy" type="number">
+<ParamField body="geoAccuracy" type="number">
  Filters properties by geographic accuracy level. "1" (HOUSE NUMBER - precise location at house number level), "2" (NEIGHBORHOOD - broader location within a neighborhood).
 </ParamField>
 
-<ParamField query="geoShapes" type="array">
+<ParamField body="geoShapes" type="array">
   Filters properties within specified geographic areas. Example: `geoShapes=geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
 </ParamField>
 

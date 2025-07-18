@@ -251,7 +251,7 @@ description: "Returns a collection of properties matching given criteria."
   Order properties by update date. Can be `asc` or `desc`.
 </ParamField>
 
-<ParamField query="page" type="integer" default="1">
+<ParamField query="page" type="number" default="1">
   The collection page number.
 </ParamField>
 
@@ -279,8 +279,8 @@ description: "Returns a collection of properties matching given criteria."
   Type of publisher. Individual `0`, Professional `1`. Example: `publisherTypes[]=0&publisherTypes[]=1`
 </ParamField>
 
-<ParamField query="radius" type="integer" >
-  Distance expressed in kilometers. Will work if latitude & longitude parameters are also set. Example: `radius=20`
+<ParamField query="radius" type="number" >
+  Distance expressed in kilometers. Will work if latitude & longitude parameters are also set. Example: `radius=20`, `radius=0.5`
 </ParamField>
 
 <ParamField query="rentalChargesMax" type="number" >
@@ -348,7 +348,7 @@ description: "Returns a collection of properties matching given criteria."
   Date until which the ***property*** is updated — inclusive. Example: `toUpdatedAt=2021-05-07 12:42:42`
 </ParamField>
 
-<ParamField query="transactionType" type="integer" >
+<ParamField query="transactionType" type="number" >
   Type of transaction. Sell `0`, Rent `1`. Example: `transactionType=0`
 </ParamField>
 

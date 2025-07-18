@@ -91,11 +91,11 @@ description: "Creates a new search"
   Included zipcodes.
 </ParamField>
 
-<ParamField body="landSurfaceMax" type="integer" >
+<ParamField body="landSurfaceMax" type="number" >
   Maximum land surface.
 </ParamField>
 
-<ParamField body="landSurfaceMin" type="integer"  >
+<ParamField body="landSurfaceMin" type="number"  >
   Minimum land surface.
 </ParamField>
 
@@ -111,11 +111,11 @@ description: "Creates a new search"
   Enable notifications which can be webhooks or emails.
 </ParamField>
 
-<ParamField body="pricePerMeterMax" type="integer"  >
+<ParamField body="pricePerMeterMax" type="number"  >
   Maximum price per meter.
 </ParamField>
 
-<ParamField body="pricePerMeterMin" type="integer"  >
+<ParamField body="pricePerMeterMin" type="number"  >
   Minimum price per meter.
 </ParamField>
 
@@ -127,15 +127,15 @@ description: "Creates a new search"
   Type of publisher. Individual `0`, Professional `1`. Example: `publisherTypes[]=0&publisherTypes[]=1`
 </ParamField>
 
-<ParamField body="radius" type="integer" >
-  Distance expressed in kilometers. Will work if latitude & longitude parameters are also set. Example: `radius=20`
+<ParamField body="radius" type="number" >
+  Distance expressed in kilometers. Will work if latitude & longitude parameters are also set. Example: `radius=20`, `radius=0.5`
 </ParamField>
 
-<ParamField body="roomMin" type="integer">
+<ParamField body="roomMin" type="number">
   Minimum number of rooms.
 </ParamField>
 
-<ParamField body="roomMax" type="integer">
+<ParamField body="roomMax" type="number">
   Maximum number of rooms.
 </ParamField>
 
@@ -143,11 +143,11 @@ description: "Creates a new search"
   Events you want to be alerted which will be sent to the `eventEndpoint`.
 </ParamField>
 
-<ParamField body="surfaceMax" type="integer"  >
+<ParamField body="surfaceMax" type="number"  >
   Maximum property surface area.
 </ParamField>
 
-<ParamField body="surfaceMin" type="integer"  >
+<ParamField body="surfaceMin" type="number"  >
   Minimum property surface area.
 </ParamField>
 
@@ -155,7 +155,7 @@ description: "Creates a new search"
   Title of the created search.
 </ParamField>
 
-<ParamField body="transactionType" type="integer" required >
+<ParamField body="transactionType" type="number" required >
   Type of transaction. Sell `0`, Rent `1`. Example: `transactionType=0`
 </ParamField>
 

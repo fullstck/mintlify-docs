@@ -155,8 +155,8 @@ description: "Returns a collection of properties matching given criteria."
   Filter for furnished properties.
 </ParamField>
 
-<ParamField query="geoAccuracy" type="number">
- Filters properties by geographic accuracy level. "1" (HOUSE NUMBER - precise location at house number level), "2" (NEIGHBORHOOD - broader location within a neighborhood).
+<ParamField query="geoAccuracy" type="array">
+ Filters properties by geographic accuracy level. "1" (HOUSE NUMBER - precise location at house number level), "2" (NEIGHBORHOOD - broader location within a neighborhood). Example: geoAccuracy[]=0
 </ParamField>
 
 <ParamField query="geoShapes" type="array">

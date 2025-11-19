@@ -16,8 +16,8 @@ description: "Updates an existing search"
   Minimum number of bedrooms in the property.
 </ParamField>
 
-<ParamField body="bedroomMin" type="integer">
-  Minimum number of bedrooms in the property.
+<ParamField body="bedroomMax" type="integer">
+  Maximum number of bedrooms in the property.
 </ParamField>
 
 <ParamField body="budgetMax" type="integer">
@@ -29,11 +29,11 @@ description: "Updates an existing search"
 </ParamField>
 
 <ParamField body="endpointRecipient" type="string">
-  Endpoint webhook to receive new matches in real time. Https url is required. You can test your endpoint here using our [webhhok simulator](api-reference/endpoint/webhooks/send).
+  HTTPS webhook that receives `match` payloads whenever a property satisfies the search. Requires `notificationEnabled=true`. You can test your endpoint with our [webhook simulator](/api-reference/endpoint/webhooks/send).
 </ParamField>
 
 <ParamField body="eventEndpoint" type="string">
-  Endpoint webhook to receive adverts events in real time. Https url is required. You can test your endpoint using our [webhhok simulator](api-reference/endpoint/webhooks/send)
+  HTTPS webhook that receives advert `event` payloads (price changes, expirations, etc.) from the searches you subscribe to. Requires `notificationEnabled=true` and at least one entry in `subscribedEvents`. You can test your endpoint with our [webhook simulator](/api-reference/endpoint/webhooks/send).
 </ParamField>
 
 <ParamField body="excludedCities" type="array">
@@ -78,15 +78,19 @@ description: "Updates an existing search"
 </ParamField>
 
 <ParamField body="lat" type="number">
-  Latitude. Will work if latitude exists in the property. Example: `lat=48.864716`
+  Latitude of the center point used for radial filtering. Provide together with `lon`, otherwise this filter has no effect. Example: `lat=48.864716`
 </ParamField>
 
 <ParamField body="lon" type="number">
-  Longitude. Will work if latitude exists in the property. Example: `lon=2.349014`
+  Longitude of the center point used for radial filtering. Provide together with `lat`. Example: `lon=2.349014`
 </ParamField>
 
 <ParamField body="notificationEnabled" type="boolean" default="false">
-  Enable notifications which can be webhooks or emails.
+  Enables delivery of matches and events either by webhook (`endpointRecipient`, `eventEndpoint`) or by email (`notificationRecipient`).
+</ParamField>
+
+<ParamField body="notificationRecipient" type="string">
+  Email address that receives alert summaries when `notificationEnabled=true`. Use this as a fallback if you do not have a webhook yet.
 </ParamField>
 
 <ParamField body="pricePerMeterMax" type="integer">
@@ -106,7 +110,7 @@ description: "Updates an existing search"
 </ParamField>
 
 <ParamField body="radius" type="integer">
-  Distance expressed in kilometers. Will work if latitude & longitude exist in the property. Example: `radius=20`
+  Distance in kilometers around the provided `lat`/`lon`. Example: `radius=20`
 </ParamField>
 
 <ParamField body="roomMin" type="integer">
@@ -118,7 +122,7 @@ description: "Updates an existing search"
 </ParamField>
 
 <ParamField body="subscribedEvents" type="array">
-  Events you want to be alerted which will be sent to the `eventEndpoint`.
+  Event codes (e.g. `property.ad.create`, `ad.update.price`, `ad.update.expired`) you want to receive on the `eventEndpoint`. See the [webhook simulator page](/api-reference/endpoint/webhooks/send) for the full list.
 </ParamField>
 
 <ParamField body="surfaceMax" type="integer">
@@ -138,7 +142,7 @@ description: "Updates an existing search"
 </ParamField>
 
 <ParamField body="withCoherentPrice" type="boolean" default="true">
-  Having properties with coherent prices.
+  Excludes adverts whose price has been flagged as incoherent/outlier by our quality checks. Set to `false` to return every result regardless of price sanity.
 </ParamField>
 
 <ParamField body="withVirtualTour" type="boolean">

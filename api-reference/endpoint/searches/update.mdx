@@ -12,6 +12,14 @@ description: "Updates an existing search"
 
 ### Body
 
+<ParamField body="advertPriceMin" type="integer">
+  Minimum price of advert. Filters properties based on any non expired adverts prices.
+</ParamField>
+
+<ParamField body="advertPriceMax" type="integer">
+  Maximum price of advert. Filters properties based on any non expired adverts prices.
+</ParamField>
+
 <ParamField body="bedroomMin" type="integer">
   Minimum number of bedrooms in the property.
 </ParamField>
@@ -40,6 +48,10 @@ description: "Updates an existing search"
   Cities to be excluded.
 </ParamField>
 
+<ParamField body="excludedSites" type="array">
+  Source sites to be excluded.
+</ParamField>
+
 <ParamField body="excludedSiteCategories" type="array">
   Site categories to be excluded.
 </ParamField>
@@ -51,6 +63,14 @@ description: "Updates an existing search"
 
 <ParamField body="furnished" type="boolean">
   Whether the property is furnished or not.
+</ParamField>
+
+<ParamField body="geoAccuracy" type="array">
+  Filters properties by geocoding confidence level. Use `1` to keep only house-number level matches and `2` to include neighborhood-level approximations. Leave empty to allow both.
+</ParamField>
+
+<ParamField body="geoShapes" type="array">
+  Filters properties within specified geographic areas. Example: `geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
 </ParamField>
 
 <ParamField body="hidePropertyContact" type="boolean">
@@ -67,6 +87,18 @@ description: "Updates an existing search"
 
 <ParamField body="includedSiteCategories" type="array">
   Included site categories.
+</ParamField>
+
+<ParamField body="includedSites" type="array">
+  Source sites to be included.
+</ParamField>
+
+<ParamField body="includedZipcodes" type="array">
+  Included zipcodes.
+</ParamField>
+
+<ParamField body="includedZipcodesInsee" type="array">
+  Included INSEE codes (used to infer the cities associated with the search).
 </ParamField>
 
 <ParamField body="landSurfaceMax" type="integer">

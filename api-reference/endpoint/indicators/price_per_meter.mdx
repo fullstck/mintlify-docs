@@ -10,6 +10,14 @@ description: "This endpoint returns the price per meter `average`, `median` and 
   Date histogram granularity for time series. Can be `month` or `year`.
 </ParamField>
 
+<ParamField query="advertPriceMax" type="integer">
+  Maximum price of advert. Filters based on any non expired adverts prices.
+</ParamField>
+
+<ParamField query="advertPriceMin" type="integer">
+  Minimum price of advert. Filters based on any non expired adverts prices.
+</ParamField>
+
 <ParamField query="bedroomMax" type="integer">
   The maximum number of bedrooms in the property.
 </ParamField>
@@ -106,6 +114,7 @@ description: "This endpoint returns the price per meter `average`, `median` and 
   Filter for expired properties.
 </ParamField>
 
+
 <ParamField query="expressions" type="array">
   Full text matching including/excluding words & phrases in the title or the description of the property.
   Example: `expressions[0][0][word]=travaux&expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=false&expressions[0][1][word]=lumineux&expressions[0][1][options][includes]=true&expressions[0][1][options][strict]=false` which will search for properties that contain both the keywords `lumineux` and `travaux`.
@@ -141,6 +150,14 @@ description: "This endpoint returns the price per meter `average`, `median` and 
 
 <ParamField query="furnished" type="boolean">
   Filter for furnished properties.
+</ParamField>
+
+<ParamField query="geoAccuracy" type="array">
+  Filters properties by geocoding confidence level. Use `1` to keep only house-number level matches and `2` to include neighborhood-level approximations.
+</ParamField>
+
+<ParamField query="geoShapes" type="array">
+  Filters properties within specified geographic areas. Example: `geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
 </ParamField>
 
 <ParamField query="greenHouseGasCategories" type="array">
@@ -293,6 +310,10 @@ description: "This endpoint returns the price per meter `average`, `median` and 
 
 <ParamField query="transactionType" type="integer">
   0 : SELL, 1 : RENT
+</ParamField>
+
+<ParamField query="withLocation" type="boolean">
+  Restrict results to properties that have a resolved location.
 </ParamField>
 
 <ParamField query="withCoherentPrice" type="boolean" default="true">

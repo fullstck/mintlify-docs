@@ -115,6 +115,7 @@ Example: energyCategories[]=A&energyCategories[]=B
   Whether to show properties that are expired. A property is considered expired when all its adverts are expired. Can be `true`, `false` or `null`. Default is `null` which returns all properties no matter if they're expired or not.
 </ParamField>
 
+
 <ParamField query="expressions" type="array">
   Full text matching including/excluding words & phrases in the title or the description of the property.
   Example: `expressions[0][0][word]=travaux&expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=false&expressions[0][1][word]=lumineux&expressions[0][1][options][includes]=true&expressions[0][1][options][strict]=false` which will search for properties that contain both the keywords `lumineux` and `travaux`.
@@ -234,6 +235,10 @@ Example: energyCategories[]=A&energyCategories[]=B
 
 <ParamField query="order[createdAt]" type="string"  default="desc">
   Order properties by creation date. Can be `asc` or `desc`.
+</ParamField>
+
+<ParamField query="order[updatedAt]" type="string">
+  Order properties by update date (API parameter name includes the double “d”). Can be `asc` or `desc`.
 </ParamField>
 
 <ParamField query="order[pricePerMeter]" type="string"  default="desc">
@@ -391,7 +396,7 @@ params = {
 
 headers = {
   'Content-Type': 'application/json',
-  'X-API-KEY': '<api_key>'
+  'X-API-KEY': process.env.STREAMESTATE_API_KEY
 }
 
 response = requests.request("GET", url, headers=headers, params=params)

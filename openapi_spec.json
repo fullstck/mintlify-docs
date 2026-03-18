@@ -1598,26 +1598,6 @@
           "parameters": [
             {
               "in": "query",
-              "name": "advertPriceMax",
-              "description": "Lower than or equal to advertPriceMax. Filter on advert price, not property price. Only non-expired adverts are considered.",
-              "schema": {
-                "type": "integer",
-                "nullable": true,
-                "example": 550000
-              }
-            },
-            {
-              "in": "query",
-              "name": "advertPriceMin",
-              "description": "Greater than or equal to advertPriceMin. Filter on advert price, not property price. Only non-expired adverts are considered.",
-              "schema": {
-                "type": "integer",
-                "nullable": true,
-                "example": 450000
-              }
-            },
-            {
-              "in": "query",
               "name": "bedroomMax",
               "description": "Having maximum x bedrooms",
               "schema": {
@@ -3449,26 +3429,6 @@
             }
           },
           "parameters": [
-            {
-              "in": "query",
-              "name": "advertPriceMax",
-              "description": "Lower than or equal to advertPriceMax. Filter on advert price, not property price. Only non-expired adverts are considered.",
-              "schema": {
-                "type": "integer",
-                "nullable": true,
-                "example": 550000
-              }
-            },
-            {
-              "in": "query",
-              "name": "advertPriceMin",
-              "description": "Greater than or equal to advertPriceMin. Filter on advert price, not property price. Only non-expired adverts are considered.",
-              "schema": {
-                "type": "integer",
-                "nullable": true,
-                "example": 450000
-              }
-            },
             {
               "in": "query",
               "name": "aggregationInterval",
@@ -15275,20 +15235,6 @@
             "propertyTypes"
           ],
           "properties": {
-            "advertPriceMax": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Maximum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
-            "advertPriceMin": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Minimum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
             "bedroomMin": {
               "type": "integer",
               "minimum": 0,
@@ -15592,20 +15538,6 @@
             "propertyTypes"
           ],
           "properties": {
-            "advertPriceMax": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Maximum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
-            "advertPriceMin": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Minimum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
             "bedroomMin": {
               "type": "integer",
               "minimum": 0,
@@ -15925,20 +15857,6 @@
               "readOnly": true,
               "type": "string"
             },
-            "advertPriceMax": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Maximum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
-            "advertPriceMin": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Minimum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
             "bedroomMin": {
               "type": "integer",
               "minimum": 0,
@@ -16253,20 +16171,6 @@
             "@type": {
               "readOnly": true,
               "type": "string"
-            },
-            "advertPriceMax": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Maximum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
-            "advertPriceMin": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Minimum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
             },
             "bedroomMin": {
               "type": "integer",
@@ -18532,20 +18436,6 @@
               "readOnly": true,
               "type": "string"
             },
-            "advertPriceMax": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Maximum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
-            "advertPriceMin": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Minimum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
             "bedroomMin": {
               "type": "integer",
               "minimum": 0,
@@ -18830,20 +18720,6 @@
             "propertyTypes"
           ],
           "properties": {
-            "advertPriceMax": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Maximum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
-            "advertPriceMin": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 1000000000,
-              "description": "Minimum price for adverts (not properties). Only non-expired adverts are considered.",
-              "nullable": true
-            },
             "bedroomMin": {
               "type": "integer",
               "minimum": 0,

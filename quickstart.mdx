@@ -1,0 +1,95 @@
+---
+title: "Quickstart"
+description: "Authenticate and make your first Stream Estate API call in a few minutes."
+---
+
+The Stream Estate API lets you query real estate properties, adverts, and market
+indicators over HTTP. This guide takes you from zero to your first working request.
+
+## Prerequisites
+
+- A Stream Estate account — [sign up](https://stream.estate/signup) if you don't have one.
+- An API key. Create one in your account settings and keep it secret.
+
+Every request is authenticated with the `X-API-KEY` header. There is no other auth
+step: no OAuth flow, no tokens to refresh.
+
+## Make your first request
+
+The call below returns houses for sale in the Seine-et-Marne department (`77`),
+created since 2020, within a €1.8M–1.9M budget.
+
+<CodeGroup>
+
+```bash cURL
+curl --location -g --request GET \
+  'https://api.stream.estate/documents/properties?includedDepartments[]=departments/77&fromDate=2020-01-10&propertyTypes[]=1&transactionType=0&withCoherentPrice=true&budgetMin=1800000&budgetMax=1900000' \
+  --header 'Content-Type: application/json' \
+  --header 'X-API-KEY: <your_api_key>'
+```
+
+```javascript Node.js
+// Node.js 18+ (native fetch)
+const params = new URLSearchParams({
+  "includedDepartments[]": "departments/77",
+  fromDate: "2020-01-10",
+  "propertyTypes[]": "1",
+  transactionType: "0",
+  withCoherentPrice: "true",
+  budgetMin: "1800000",
+  budgetMax: "1900000",
+});
+
+const res = await fetch(
+  `https://api.stream.estate/documents/properties?${params}`,
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-KEY": process.env.STREAM_ESTATE_KEY,
+    },
+  }
+);
+
+if (!res.ok) throw new Error(`Stream Estate API: ${res.status}`);
+const data = await res.json();
+console.log(data["hydra:member"]);
+```
+
+</CodeGroup>
+
+A successful response is a [Hydra](https://www.hydra-cg.com/) collection: matching
+properties are in `hydra:member`, and `hydra:totalItems` holds the total count. See
+the [Properties reference](/api-reference/endpoint/properties/get_collection) for the
+full response shape.
+
+## Understand the parameters
+
+The example above uses only documented enum values:
+
+| Parameter | Value | Meaning |
+| --- | --- | --- |
+| `propertyTypes[]` | `1` | House — Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6` |
+| `transactionType` | `0` | Sell `0`, Rent `1` |
+| `includedDepartments[]` | `departments/77` | Restrict to a department — get ids from [Locations](/api-reference/endpoint/indicators/locations) |
+| `withCoherentPrice` | `true` | Exclude listings whose price is flagged as incoherent |
+| `budgetMin` / `budgetMax` | `1800000` / `1900000` | Budget range, in euros |
+
+The [Properties reference](/api-reference/endpoint/properties/get_collection) lists
+every available filter.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Core concepts" icon="diagram-project" href="/api-reference/concepts">
+    Properties, adverts, events, searches, and webhooks explained.
+  </Card>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    How to create and use your API key.
+  </Card>
+  <Card title="Browse properties" icon="house" href="/api-reference/endpoint/properties/get_collection">
+    Every filter available on the properties endpoint.
+  </Card>
+  <Card title="Searches & webhooks" icon="bell" href="/api-reference/endpoint/webhooks/send">
+    Get notified in real time when new properties match a saved search.
+  </Card>
+</CardGroup>

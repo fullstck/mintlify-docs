@@ -17,7 +17,8 @@
           {
             "group": "Welcome",
             "pages": [
-              "introduction"
+              "introduction",
+              "quickstart"
             ]
           }
         ]

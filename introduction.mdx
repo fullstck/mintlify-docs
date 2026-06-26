@@ -2,6 +2,18 @@
 title: What is Stream Estate?
 description: 'The Stream Estate API is designed to enable builders to easily query, observe, and automate on-chain real estate data and insights'
 ---
+
+The Stream Estate API lets you query, observe, and automate real estate data over
+HTTP. Authenticate with the `X-API-KEY` header — here's a working call that returns
+houses for sale:
+
+```bash
+curl -g 'https://api.stream.estate/documents/properties?propertyTypes[]=1&transactionType=0' \
+  --header 'X-API-KEY: <your_api_key>'
+```
+
+New here? The [Quickstart](/quickstart) gets you to your first response in a few minutes.
+
 <Card
     title="API Reference"
     icon="code"

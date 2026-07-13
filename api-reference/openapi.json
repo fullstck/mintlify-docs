@@ -1,0 +1,3730 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Stream Estate API",
+    "description": "The Stream Estate API is designed to enable builders to easily query, observe, and automate real estate data and insights. All API calls require the `X-API-KEY` header. Sign up at https://stream.estate/signup and create an API key in your settings.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://stream.estate"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.stream.estate"
+    }
+  ],
+  "security": [
+    {
+      "apiKey": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Properties",
+      "description": "Query aggregated real estate properties and their adverts."
+    },
+    {
+      "name": "Indicators",
+      "description": "Market indicators, points of interest and location lookups."
+    },
+    {
+      "name": "Searches",
+      "description": "Saved searches with webhook or email notifications."
+    },
+    {
+      "name": "Webhooks",
+      "description": "Tools to test webhook integrations."
+    }
+  ],
+  "paths": {
+    "/documents/properties": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "List properties",
+        "description": "Returns a collection of properties matching given criteria.",
+        "operationId": "getProperties",
+        "parameters": [
+          {
+            "name": "advertPriceMin",
+            "in": "query",
+            "description": "Minimum price of advert. Filters properties based on any non expired adverts prices.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "advertPriceMax",
+            "in": "query",
+            "description": "Maximum price of advert. Filters properties based on any non expired adverts prices.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "bedroomMin",
+            "in": "query",
+            "description": "Minimum number of bedrooms in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "bedroomMax",
+            "in": "query",
+            "description": "Maximum number of bedrooms in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "budgetMin",
+            "in": "query",
+            "description": "Minimum budget for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "budgetMax",
+            "in": "query",
+            "description": "Maximum budget for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "condominiumFeesMin",
+            "in": "query",
+            "description": "Minimum condominium fees for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "condominiumFeesMax",
+            "in": "query",
+            "description": "Maximum condominium fees for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "constructionYearMin",
+            "in": "query",
+            "description": "Minimum construction year of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "constructionYearMax",
+            "in": "query",
+            "description": "Maximum construction year of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "energyCategories",
+            "in": "query",
+            "description": "The energy efficiency categories of the property. Example: `energyCategories[]=A&energyCategories[]=B`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D",
+                  "E",
+                  "F",
+                  "G"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "energyValueMin",
+            "in": "query",
+            "description": "Minimum energy value of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "energyValueMax",
+            "in": "query",
+            "description": "Maximum energy value of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventPriceVariationFromCreatedAt",
+            "in": "query",
+            "description": "Date from which an event of type price is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventPriceVariationToCreatedAt",
+            "in": "query",
+            "description": "Date before which an event of type price is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventPriceVariationMin",
+            "in": "query",
+            "description": "Minimum percent variation of an event of type price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventPriceVariationMax",
+            "in": "query",
+            "description": "Maximum percent variation of an event of type price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationFromCreatedAt",
+            "in": "query",
+            "description": "Date from which an event of type surface is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationToCreatedAt",
+            "in": "query",
+            "description": "Date before which an event of type surface is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationMin",
+            "in": "query",
+            "description": "Minimum percent variation of an event of type surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationMax",
+            "in": "query",
+            "description": "Maximum percent variation of an event of type surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "excludedCities",
+            "in": "query",
+            "description": "Cities to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedInseeCodes",
+            "in": "query",
+            "description": "Insee codes to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedProperties",
+            "in": "query",
+            "description": "Properties to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedZipcodes",
+            "in": "query",
+            "description": "Zipcodes to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "expressions",
+            "in": "query",
+            "description": "Full text matching including/excluding words & phrases in the title or the description of the property. Example: `expressions[0][0][word]=travaux&expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=false`.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "feesPercentageMin",
+            "in": "query",
+            "description": "Minimum percentage of fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "feesPercentageMax",
+            "in": "query",
+            "description": "Maximum percentage of fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "feesResponsibility",
+            "in": "query",
+            "description": "Responsibility for fees. `0` for seller, `1` for buyer.",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "floorQuantityMin",
+            "in": "query",
+            "description": "Minimum number of floors in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "floorQuantityMax",
+            "in": "query",
+            "description": "Maximum number of floors in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "Date from which the property is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "Date until which the property is created — inclusive. Example: `toDate=2021-05-07 12:42:42`",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "fromUpdatedAt",
+            "in": "query",
+            "description": "Date from which the property is updated — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "toUpdatedAt",
+            "in": "query",
+            "description": "Date until which the property is updated — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "furnished",
+            "in": "query",
+            "description": "Filter for furnished properties.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "geoAccuracy",
+            "in": "query",
+            "description": "Filters properties by geocoding confidence level: `1` (house-number level), `2` (neighborhood level).",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "geoShapes",
+            "in": "query",
+            "description": "Filters properties within specified geographic areas (arrays of `[lon, lat]` points forming polygons). Example: `geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&...`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "greenHouseGasCategories",
+            "in": "query",
+            "description": "Green house gas performance letter array of the property.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D",
+                  "E",
+                  "F",
+                  "G"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "greenHouseGasValueMin",
+            "in": "query",
+            "description": "Minimum value of green house gas of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "greenHouseGasValueMax",
+            "in": "query",
+            "description": "Maximum value of green house gas of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "includedCities",
+            "in": "query",
+            "description": "Located in given cities. Example: `includedCities[]=/cities/30953`. Use the location autocomplete endpoint to get the desired city IRIs.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedDepartments",
+            "in": "query",
+            "description": "Located in given departments. Example: `includedDepartments[]=/departments/77`. Use the location autocomplete endpoint to get the desired department IRIs.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedInseeCodes",
+            "in": "query",
+            "description": "Located in given insee codes. Example: `includedInseeCodes[]=75117&includedInseeCodes[]=75118`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedZipcodes",
+            "in": "query",
+            "description": "Located in given zipcodes. Example: `includedZipcodes[]=75017&includedZipcodes[]=75018`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "inventoryPriceMin",
+            "in": "query",
+            "description": "Greater than or equal to given inventory price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "inventoryPriceMax",
+            "in": "query",
+            "description": "Lower than or equal to given inventory price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude. Will work if latitude exists in the property. Example: `lat=48.864716`",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "description": "Longitude. Will work if longitude exists in the property. Example: `lon=2.349014`",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Distance expressed in kilometers. Will work if latitude & longitude parameters are also set. Example: `radius=20`, `radius=0.5`",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lotCountMin",
+            "in": "query",
+            "description": "Greater than or equal to given lot count.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "lotCountMax",
+            "in": "query",
+            "description": "Lower than or equal to given lot count.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "priceExcludingFeesMin",
+            "in": "query",
+            "description": "Greater than or equal to given price excluding fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "priceExcludingFeesMax",
+            "in": "query",
+            "description": "Lower than or equal to given price excluding fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pricePerMeterMin",
+            "in": "query",
+            "description": "Greater than or equal to given price per meter.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pricePerMeterMax",
+            "in": "query",
+            "description": "Lower than or equal to given price per meter.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "propertyTypes",
+            "in": "query",
+            "description": "Type of property. Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`. Example: `propertyTypes[]=0&propertyTypes[]=1`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "publisherTypes",
+            "in": "query",
+            "description": "Type of publisher. Individual `0`, Professional `1`.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "rentalChargesMin",
+            "in": "query",
+            "description": "Greater than or equal to given rental charges amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "rentalChargesMax",
+            "in": "query",
+            "description": "Lower than or equal to given rental charges amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "rentalPledgeMin",
+            "in": "query",
+            "description": "Greater than or equal to given rental pledge amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "rentalPledgeMax",
+            "in": "query",
+            "description": "Lower than or equal to given rental pledge amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "renterFeesMin",
+            "in": "query",
+            "description": "Greater than or equal to given renter fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "renterFeesMax",
+            "in": "query",
+            "description": "Lower than or equal to given renter fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "roomMin",
+            "in": "query",
+            "description": "Minimum rooms of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "roomMax",
+            "in": "query",
+            "description": "Maximum rooms of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sortMode",
+            "in": "query",
+            "description": "Whether to sort results by properties or by adverts. If `property`, `fromDate`/`toDate` apply to the property root object; if `advert`, they apply to the nested adverts.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "property",
+                "advert"
+              ],
+              "default": "property"
+            }
+          },
+          {
+            "name": "surfaceMin",
+            "in": "query",
+            "description": "Greater than or equal to given surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "surfaceMax",
+            "in": "query",
+            "description": "Lower than or equal to given surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "transactionType",
+            "in": "query",
+            "description": "Type of transaction. Sell `0`, Rent `1`.",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "withCoherentPrice",
+            "in": "query",
+            "description": "Filter properties with coherent price.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "withLocation",
+            "in": "query",
+            "description": "Having a latitude and longitude.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "withVirtualTour",
+            "in": "query",
+            "description": "Having a virtual tour video link.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "expired",
+            "in": "query",
+            "description": "Whether to show properties that are expired. A property is considered expired when all its adverts are expired. Default is `null` which returns all properties no matter if they're expired or not.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "fromExpiredAt",
+            "in": "query",
+            "description": "Date from which the advert is expired — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "toExpiredAt",
+            "in": "query",
+            "description": "Date until which the advert is expired — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "excludedSites",
+            "in": "query",
+            "description": "Sources sites to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedSites",
+            "in": "query",
+            "description": "Sources sites to be included.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "landSurfaceMin",
+            "in": "query",
+            "description": "Minimum land surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "landSurfaceMax",
+            "in": "query",
+            "description": "Maximum land surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "order[createdAt]",
+            "in": "query",
+            "description": "Order properties by creation date.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "order[updatedAt]",
+            "in": "query",
+            "description": "Order properties by update date.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "order[pricePerMeter]",
+            "in": "query",
+            "description": "Order properties by price per meter.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "order[price]",
+            "in": "query",
+            "description": "Order properties by price.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "order[surface]",
+            "in": "query",
+            "description": "Order properties by surface.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number.",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page. Max is `30`.",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection of properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "429": {
+            "description": "Too Many Requests — you're requesting too much! Slow down!"
+          }
+        }
+      }
+    },
+    "/documents/properties/{id}": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "Get a property",
+        "description": "Returns a single property matching the given id.",
+        "operationId": "getProperty",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "UUID of the selected property",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested property.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyDocument"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "404": {
+            "description": "Not Found — the requested resource could not be found."
+          }
+        }
+      }
+    },
+    "/documents/properties/{id}/similar-properties": {
+      "get": {
+        "tags": [
+          "Properties"
+        ],
+        "summary": "List similar properties",
+        "description": "Returns a collection of properties similar to given property.",
+        "operationId": "getSimilarProperties",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "UUID of the selected property",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "Date from which the property is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "order[createdAt]",
+            "in": "query",
+            "description": "Order properties by creation date.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "order[updatedAt]",
+            "in": "query",
+            "description": "Order properties by update date.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "order[pricePerMeter]",
+            "in": "query",
+            "description": "Order properties by price per meter.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "order[price]",
+            "in": "query",
+            "description": "Order properties by price.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "order[surface]",
+            "in": "query",
+            "description": "Order properties by surface.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number.",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page. Max is `30`.",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection of similar properties.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyCollection"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "404": {
+            "description": "Not Found — the requested resource could not be found."
+          }
+        }
+      }
+    },
+    "/indicators/price_per_meter": {
+      "get": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Price per meter evolution",
+        "description": "Returns the price per meter `average`, `median` and `time series` of properties matching the given criteria.",
+        "operationId": "getPricePerMeter",
+        "parameters": [
+          {
+            "name": "aggregationInterval",
+            "in": "query",
+            "description": "Date histogram granularity for time series.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "month",
+                "year"
+              ],
+              "default": "month"
+            }
+          },
+          {
+            "name": "advertPriceMin",
+            "in": "query",
+            "description": "Minimum price of advert. Filters properties based on any non expired adverts prices.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "advertPriceMax",
+            "in": "query",
+            "description": "Maximum price of advert. Filters properties based on any non expired adverts prices.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "bedroomMin",
+            "in": "query",
+            "description": "Minimum number of bedrooms in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "bedroomMax",
+            "in": "query",
+            "description": "Maximum number of bedrooms in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "budgetMin",
+            "in": "query",
+            "description": "Minimum budget for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "budgetMax",
+            "in": "query",
+            "description": "Maximum budget for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "condominiumFeesMin",
+            "in": "query",
+            "description": "Minimum condominium fees for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "condominiumFeesMax",
+            "in": "query",
+            "description": "Maximum condominium fees for the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "constructionYearMin",
+            "in": "query",
+            "description": "Minimum construction year of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "constructionYearMax",
+            "in": "query",
+            "description": "Maximum construction year of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "energyCategories",
+            "in": "query",
+            "description": "The energy efficiency categories of the property. Example: `energyCategories[]=A&energyCategories[]=B`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D",
+                  "E",
+                  "F",
+                  "G"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "energyValueMin",
+            "in": "query",
+            "description": "Minimum energy value of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "energyValueMax",
+            "in": "query",
+            "description": "Maximum energy value of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventPriceVariationFromCreatedAt",
+            "in": "query",
+            "description": "Date from which an event of type price is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventPriceVariationToCreatedAt",
+            "in": "query",
+            "description": "Date before which an event of type price is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventPriceVariationMin",
+            "in": "query",
+            "description": "Minimum percent variation of an event of type price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventPriceVariationMax",
+            "in": "query",
+            "description": "Maximum percent variation of an event of type price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationFromCreatedAt",
+            "in": "query",
+            "description": "Date from which an event of type surface is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationToCreatedAt",
+            "in": "query",
+            "description": "Date before which an event of type surface is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationMin",
+            "in": "query",
+            "description": "Minimum percent variation of an event of type surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "eventSurfaceVariationMax",
+            "in": "query",
+            "description": "Maximum percent variation of an event of type surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "excludedCities",
+            "in": "query",
+            "description": "Cities to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedInseeCodes",
+            "in": "query",
+            "description": "Insee codes to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedProperties",
+            "in": "query",
+            "description": "Properties to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedZipcodes",
+            "in": "query",
+            "description": "Zipcodes to be excluded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "expressions",
+            "in": "query",
+            "description": "Full text matching including/excluding words & phrases in the title or the description of the property. Example: `expressions[0][0][word]=travaux&expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=false`.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "feesPercentageMin",
+            "in": "query",
+            "description": "Minimum percentage of fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "feesPercentageMax",
+            "in": "query",
+            "description": "Maximum percentage of fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "feesResponsibility",
+            "in": "query",
+            "description": "Responsibility for fees. `0` for seller, `1` for buyer.",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "floorQuantityMin",
+            "in": "query",
+            "description": "Minimum number of floors in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "floorQuantityMax",
+            "in": "query",
+            "description": "Maximum number of floors in the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "Date from which the property is created — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "Date until which the property is created — inclusive. Example: `toDate=2021-05-07 12:42:42`",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "fromUpdatedAt",
+            "in": "query",
+            "description": "Date from which the property is updated — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "toUpdatedAt",
+            "in": "query",
+            "description": "Date until which the property is updated — inclusive.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "furnished",
+            "in": "query",
+            "description": "Filter for furnished properties.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "geoAccuracy",
+            "in": "query",
+            "description": "Filters properties by geocoding confidence level: `1` (house-number level), `2` (neighborhood level).",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "geoShapes",
+            "in": "query",
+            "description": "Filters properties within specified geographic areas (arrays of `[lon, lat]` points forming polygons). Example: `geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&...`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "greenHouseGasCategories",
+            "in": "query",
+            "description": "Green house gas performance letter array of the property.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D",
+                  "E",
+                  "F",
+                  "G"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "greenHouseGasValueMin",
+            "in": "query",
+            "description": "Minimum value of green house gas of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "greenHouseGasValueMax",
+            "in": "query",
+            "description": "Maximum value of green house gas of the property.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "includedCities",
+            "in": "query",
+            "description": "Located in given cities. Example: `includedCities[]=/cities/30953`. Use the location autocomplete endpoint to get the desired city IRIs.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedDepartments",
+            "in": "query",
+            "description": "Located in given departments. Example: `includedDepartments[]=/departments/77`. Use the location autocomplete endpoint to get the desired department IRIs.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedInseeCodes",
+            "in": "query",
+            "description": "Located in given insee codes. Example: `includedInseeCodes[]=75117&includedInseeCodes[]=75118`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "includedZipcodes",
+            "in": "query",
+            "description": "Located in given zipcodes. Example: `includedZipcodes[]=75017&includedZipcodes[]=75018`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "inventoryPriceMin",
+            "in": "query",
+            "description": "Greater than or equal to given inventory price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "inventoryPriceMax",
+            "in": "query",
+            "description": "Lower than or equal to given inventory price.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude. Will work if latitude exists in the property. Example: `lat=48.864716`",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "description": "Longitude. Will work if longitude exists in the property. Example: `lon=2.349014`",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Distance expressed in kilometers. Will work if latitude & longitude parameters are also set. Example: `radius=20`, `radius=0.5`",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lotCountMin",
+            "in": "query",
+            "description": "Greater than or equal to given lot count.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "lotCountMax",
+            "in": "query",
+            "description": "Lower than or equal to given lot count.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "priceExcludingFeesMin",
+            "in": "query",
+            "description": "Greater than or equal to given price excluding fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "priceExcludingFeesMax",
+            "in": "query",
+            "description": "Lower than or equal to given price excluding fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pricePerMeterMin",
+            "in": "query",
+            "description": "Greater than or equal to given price per meter.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pricePerMeterMax",
+            "in": "query",
+            "description": "Lower than or equal to given price per meter.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "propertyTypes",
+            "in": "query",
+            "description": "Type of property. Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`. Example: `propertyTypes[]=0&propertyTypes[]=1`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "publisherTypes",
+            "in": "query",
+            "description": "Type of publisher. Individual `0`, Professional `1`.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "rentalChargesMin",
+            "in": "query",
+            "description": "Greater than or equal to given rental charges amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "rentalChargesMax",
+            "in": "query",
+            "description": "Lower than or equal to given rental charges amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "rentalPledgeMin",
+            "in": "query",
+            "description": "Greater than or equal to given rental pledge amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "rentalPledgeMax",
+            "in": "query",
+            "description": "Lower than or equal to given rental pledge amount.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "renterFeesMin",
+            "in": "query",
+            "description": "Greater than or equal to given renter fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "renterFeesMax",
+            "in": "query",
+            "description": "Lower than or equal to given renter fees.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "roomMin",
+            "in": "query",
+            "description": "Minimum rooms of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "roomMax",
+            "in": "query",
+            "description": "Maximum rooms of the property.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sortMode",
+            "in": "query",
+            "description": "Whether to sort results by properties or by adverts. If `property`, `fromDate`/`toDate` apply to the property root object; if `advert`, they apply to the nested adverts.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "property",
+                "advert"
+              ],
+              "default": "property"
+            }
+          },
+          {
+            "name": "surfaceMin",
+            "in": "query",
+            "description": "Greater than or equal to given surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "surfaceMax",
+            "in": "query",
+            "description": "Lower than or equal to given surface.",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "transactionType",
+            "in": "query",
+            "description": "Type of transaction. Sell `0`, Rent `1`.",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "withCoherentPrice",
+            "in": "query",
+            "description": "Filter properties with coherent price.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "withLocation",
+            "in": "query",
+            "description": "Having a latitude and longitude.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "withVirtualTour",
+            "in": "query",
+            "description": "Having a virtual tour video link.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "expired",
+            "in": "query",
+            "description": "Filter for expired properties.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "order[createdAt]",
+            "in": "query",
+            "description": "Order properties by creation date.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "order[updatedAt]",
+            "in": "query",
+            "description": "Order properties by update date.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number.",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "itemsPerPage",
+            "in": "query",
+            "description": "The number of items per page. Max is `30`.",
+            "schema": {
+              "type": "integer",
+              "default": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price per meter indicators.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PricePerMeterCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "429": {
+            "description": "Too Many Requests — you're requesting too much! Slow down!"
+          }
+        }
+      }
+    },
+    "/indicators/points_of_interest": {
+      "get": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Points of interest",
+        "description": "Returns the points of interest matching the given criteria.",
+        "operationId": "getPointsOfInterest",
+        "parameters": [
+          {
+            "name": "facilities",
+            "in": "query",
+            "description": "Category of points of interest. Current available categories are `kindergarten`, `school`, `restaurant`, `hospital`, `parking`. Example: `facilities[]=kindergarten&facilities[]=school`",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "kindergarten",
+                  "school",
+                  "restaurant",
+                  "hospital",
+                  "parking"
+                ]
+              }
+            },
+            "required": true,
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude.",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "description": "Longitude.",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "Distance expressed in kilometers.",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Points of interest around the given location.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PointOfInterestCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          }
+        }
+      }
+    },
+    "/public/location-autocomplete": {
+      "get": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "Location autocomplete",
+        "description": "Returns cities or departments matching the given criteria. Use the returned IRIs in `includedCities` / `includedDepartments` filters.",
+        "operationId": "locationAutocomplete",
+        "security": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Query term to perform search.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "excludedCitiesIds",
+            "in": "query",
+            "description": "Exclude cities using their IRI.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "excludedDepartmentsIds",
+            "in": "query",
+            "description": "Exclude departments using their IRI.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching cities and departments.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationAutocompleteCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          }
+        }
+      }
+    },
+    "/cities": {
+      "get": {
+        "tags": [
+          "Indicators"
+        ],
+        "summary": "List cities",
+        "description": "Returns cities matching the given criteria.",
+        "operationId": "getCities",
+        "parameters": [
+          {
+            "name": "excludeGroupedCities",
+            "in": "query",
+            "description": "Set to true to exclude cities that have grouped cities under them.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "insee",
+            "in": "query",
+            "description": "Filter by INSEE code.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "insee[]",
+            "in": "query",
+            "description": "Filter by multiple INSEE codes.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "polygon",
+            "in": "query",
+            "description": "Filter by cities inside a given polygon defined by GPS coordinates. Example: `polygon[0][lat]=43.12&polygon[0][lon]=5.93&polygon[1][lat]=43.12&polygon[1][lon]=6.01&...`",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "libelle",
+            "in": "query",
+            "description": "Filter by city label/display name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by city name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order[name]",
+            "in": "query",
+            "description": "Sort by name.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number.",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "description": "Filter by city slug.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "zipcode",
+            "in": "query",
+            "description": "Filter by zipcode.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "zipcode[]",
+            "in": "query",
+            "description": "Filter by multiple zipcodes.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection of cities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CityCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          }
+        }
+      }
+    },
+    "/searches": {
+      "get": {
+        "tags": [
+          "Searches"
+        ],
+        "summary": "List searches",
+        "description": "Returns a collection of your existing searches matching given criteria.",
+        "operationId": "getSearches",
+        "parameters": [
+          {
+            "name": "notificationEnabled",
+            "in": "query",
+            "description": "Filter searches which have notifications enabled or not.",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "order[title]",
+            "in": "query",
+            "description": "Order searches by title.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number.",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "Title of the created search.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection of searches.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchCollection"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Searches"
+        ],
+        "summary": "Create a search",
+        "description": "Creates a new search.",
+        "operationId": "createSearch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created search.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Search"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          }
+        }
+      }
+    },
+    "/searches/{id}": {
+      "get": {
+        "tags": [
+          "Searches"
+        ],
+        "summary": "Get a search",
+        "description": "Returns a single existing search matching the given id.",
+        "operationId": "getSearch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "UUID of the selected search",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested search.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Search"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "404": {
+            "description": "Not Found — the requested resource could not be found."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Searches"
+        ],
+        "summary": "Update a search",
+        "description": "Updates an existing search.",
+        "operationId": "updateSearch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "UUID of the existing search",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated search.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Search"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "404": {
+            "description": "Not Found — the requested resource could not be found."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Searches"
+        ],
+        "summary": "Delete a search",
+        "description": "Deletes an existing search.",
+        "operationId": "deleteSearch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "UUID of the selected search",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Search deleted."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          },
+          "404": {
+            "description": "Not Found — the requested resource could not be found."
+          }
+        }
+      }
+    },
+    "/webhook-tester": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Simulate a webhook",
+        "description": "Simulates a `match` or an `event` to the given endpoint. Your server implementation should return a `200` HTTP status code if the data was received successfully. If a webhook fails, it will be retried up to five times, each retry 1 hour after the previous one. Restricting your endpoints to the Stream Estate IP addresses is highly recommended: sandbox `178.238.226.136`, production `144.76.91.183`.",
+        "operationId": "simulateWebhook",
+        "parameters": [
+          {
+            "name": "endpoint",
+            "in": "query",
+            "description": "Endpoint where the match or the event will be sent to.",
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "required": true
+          },
+          {
+            "name": "eventType",
+            "in": "query",
+            "description": "The type of event you want to trigger.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ad.update.price",
+                "ad.update.surface",
+                "ad.update.pictures",
+                "ad.update.expired",
+                "property.ad.create",
+                "property.ad.update"
+              ]
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The simulated payload was sent to the given endpoint."
+          },
+          "400": {
+            "description": "Bad Request — your request is incorrect."
+          },
+          "401": {
+            "description": "Unauthorized — your API key is wrong."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY",
+        "description": "API key created in your Stream Estate settings."
+      }
+    },
+    "schemas": {
+      "GeoPoint": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number"
+          },
+          "lon": {
+            "type": "number"
+          }
+        }
+      },
+      "CodeIdName": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "EnergyRating": {
+        "type": "object",
+        "description": "Energy / greenhouse-gas performance rating.",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F",
+              "G"
+            ]
+          },
+          "value": {
+            "type": "number"
+          }
+        }
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "agency": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "fax": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          }
+        }
+      },
+      "AdvertEvent": {
+        "type": "object",
+        "description": "A change recorded on an advert (price update, surface update, ...).",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fieldName": {
+            "type": "string"
+          },
+          "fieldNewValue": {
+            "type": "string"
+          },
+          "fieldOldValue": {
+            "type": "string"
+          },
+          "percentVariation": {
+            "type": "number"
+          }
+        }
+      },
+      "Publisher": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "integer",
+            "description": "Publisher type. Individual `0`, Professional `1`.",
+            "enum": [
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "Advert": {
+        "type": "object",
+        "description": "A published listing of the property on a source site.",
+        "properties": {
+          "condominiumFees": {
+            "type": "number"
+          },
+          "constructionYear": {
+            "type": "integer"
+          },
+          "contact": {
+            "$ref": "#/components/schemas/Contact"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "elevator": {
+            "type": "boolean"
+          },
+          "energy": {
+            "$ref": "#/components/schemas/EnergyRating"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdvertEvent"
+            }
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "feesPercentage": {
+            "type": "number"
+          },
+          "feesResponsibility": {
+            "type": "integer",
+            "description": "Responsibility for fees. `0` for seller, `1` for buyer.",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "floor": {
+            "type": "integer"
+          },
+          "floorQuantity": {
+            "type": "integer"
+          },
+          "furnished": {
+            "type": "boolean"
+          },
+          "greenHouseGas": {
+            "$ref": "#/components/schemas/EnergyRating"
+          },
+          "inventoryPrice": {
+            "type": "number"
+          },
+          "landSurface": {
+            "type": "number"
+          },
+          "lastCrawledAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lotCount": {
+            "type": "integer"
+          },
+          "pictures": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "picturesRemote": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "price": {
+            "type": "number"
+          },
+          "priceExcludingFees": {
+            "type": "number"
+          },
+          "publisher": {
+            "$ref": "#/components/schemas/Publisher"
+          },
+          "rentalCharges": {
+            "type": "number"
+          },
+          "rentalPledge": {
+            "type": "number"
+          },
+          "renterFees": {
+            "type": "number"
+          },
+          "surface": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "virtualTour": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "CityDetails": {
+        "type": "object",
+        "description": "City the property belongs to.",
+        "properties": {
+          "cityParentId": {
+            "type": "integer"
+          },
+          "country": {
+            "$ref": "#/components/schemas/CodeIdName"
+          },
+          "department": {
+            "$ref": "#/components/schemas/CodeIdName"
+          },
+          "groupedCityNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "groupedCityZipcodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hasGroupedByName": {
+            "type": "boolean"
+          },
+          "hasGroupedByZipcode": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "insee": {
+            "type": "string"
+          },
+          "locations": {
+            "$ref": "#/components/schemas/GeoPoint"
+          },
+          "name": {
+            "type": "string"
+          },
+          "open": {
+            "type": "boolean"
+          },
+          "originalName": {
+            "type": "string"
+          },
+          "region": {
+            "$ref": "#/components/schemas/CodeIdName"
+          },
+          "zipcode": {
+            "type": "string"
+          }
+        }
+      },
+      "StationLine": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "routeName": {
+            "type": "string"
+          }
+        }
+      },
+      "Station": {
+        "type": "object",
+        "description": "Nearby public transport station.",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StationLine"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PropertyDocument": {
+        "type": "object",
+        "description": "A real estate property aggregated from one or more adverts.",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "adverts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Advert"
+            }
+          },
+          "bedroom": {
+            "type": "integer"
+          },
+          "city": {
+            "$ref": "#/components/schemas/CityDetails"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "elevator": {
+            "type": "boolean"
+          },
+          "expired": {
+            "type": "boolean",
+            "description": "A property is considered expired when all its adverts are expired."
+          },
+          "expiredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "floor": {
+            "type": "integer"
+          },
+          "furnished": {
+            "type": "boolean"
+          },
+          "landSurface": {
+            "type": "number"
+          },
+          "lastCrawledAdvert": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lastCrawledAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "locations": {
+            "$ref": "#/components/schemas/GeoPoint"
+          },
+          "pictures": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "price": {
+            "type": "number"
+          },
+          "pricePerMeter": {
+            "type": "number"
+          },
+          "property": {
+            "type": "string"
+          },
+          "propertyType": {
+            "type": "integer",
+            "description": "Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`.",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "publisherTypes": {
+            "type": "array",
+            "description": "Individual `0`, Professional `1`.",
+            "items": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          "room": {
+            "type": "integer"
+          },
+          "stations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Station"
+            }
+          },
+          "surface": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "transactionType": {
+            "type": "integer",
+            "description": "Sell `0`, Rent `1`.",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PropertyCollection": {
+        "type": "object",
+        "description": "Paginated collection of properties.",
+        "properties": {
+          "hydra:member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PropertyDocument"
+            }
+          },
+          "hydra:totalItems": {
+            "type": "integer"
+          },
+          "hydra:view": {
+            "$ref": "#/components/schemas/HydraView"
+          },
+          "hydra:search": {
+            "$ref": "#/components/schemas/HydraSearch"
+          }
+        }
+      },
+      "HydraView": {
+        "type": "object",
+        "properties": {
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "hydra:first": {
+            "type": "string"
+          },
+          "hydra:last": {
+            "type": "string"
+          },
+          "hydra:next": {
+            "type": "string"
+          }
+        }
+      },
+      "HydraSearch": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string"
+          },
+          "hydra:template": {
+            "type": "string"
+          },
+          "hydra:variableRepresentation": {
+            "type": "string"
+          },
+          "hydra:mapping": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "type": "string"
+                },
+                "variable": {
+                  "type": "string"
+                },
+                "property": {
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "PricePerMeterIndicator": {
+        "type": "object",
+        "properties": {
+          "average": {
+            "type": "number"
+          },
+          "average_min": {
+            "type": "number"
+          },
+          "average_max": {
+            "type": "number"
+          },
+          "median": {
+            "type": "number"
+          },
+          "series": {
+            "type": "object",
+            "description": "Price per meter time series keyed by period (e.g. `2023-01`).",
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "PricePerMeterCollection": {
+        "type": "object",
+        "description": "Price per meter indicators.",
+        "properties": {
+          "hydra:member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PricePerMeterIndicator"
+            }
+          },
+          "hydra:totalItems": {
+            "type": "integer"
+          },
+          "hydra:view": {
+            "$ref": "#/components/schemas/HydraView"
+          },
+          "hydra:search": {
+            "$ref": "#/components/schemas/HydraSearch"
+          }
+        }
+      },
+      "PointOfInterest": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number"
+          },
+          "lon": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "description": "Category-specific attributes (e.g. `schoolType`, `operatorType`).",
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "PointOfInterestCollection": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "hydra:member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PointOfInterest"
+            }
+          },
+          "hydra:totalItems": {
+            "type": "integer"
+          },
+          "hydra:view": {
+            "$ref": "#/components/schemas/HydraView"
+          }
+        }
+      },
+      "City": {
+        "type": "object",
+        "properties": {
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "zipcode": {
+            "type": "string"
+          },
+          "insee": {
+            "type": "string"
+          },
+          "article": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "libelle": {
+            "type": "string",
+            "nullable": true
+          },
+          "department": {
+            "type": "string",
+            "description": "IRI of the department, e.g. `/departments/1`."
+          },
+          "cityParent": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "@id": {
+                "type": "string"
+              },
+              "@type": {
+                "type": "string"
+              },
+              "zipcode": {
+                "type": "string"
+              },
+              "insee": {
+                "type": "string"
+              },
+              "article": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "libelle": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "originalName": {
+            "type": "string"
+          }
+        }
+      },
+      "CityCollection": {
+        "type": "object",
+        "properties": {
+          "hydra:member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/City"
+            }
+          }
+        }
+      },
+      "LocationAutocompleteItem": {
+        "type": "object",
+        "description": "A city or department matching the autocomplete query.",
+        "properties": {
+          "@id": {
+            "type": "string",
+            "description": "IRI usable in `includedCities` / `includedDepartments` filters."
+          },
+          "@type": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "groupedCityNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "groupedCityZipcodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "insee": {
+            "type": "string"
+          },
+          "libelle": {
+            "type": "string"
+          },
+          "location": {
+            "$ref": "#/components/schemas/GeoPoint"
+          },
+          "name": {
+            "type": "string"
+          },
+          "zipcode": {
+            "type": "string"
+          }
+        }
+      },
+      "LocationAutocompleteCollection": {
+        "type": "object",
+        "properties": {
+          "hydra:member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationAutocompleteItem"
+            }
+          }
+        }
+      },
+      "Search": {
+        "type": "object",
+        "description": "A saved search with optional webhook / email notifications.",
+        "properties": {
+          "@context": {
+            "type": "string"
+          },
+          "@id": {
+            "type": "string"
+          },
+          "@type": {
+            "type": "string"
+          },
+          "bedroomMin": {
+            "type": "integer",
+            "nullable": true
+          },
+          "bedroomMax": {
+            "type": "integer",
+            "nullable": true
+          },
+          "budgetMax": {
+            "type": "number",
+            "nullable": true
+          },
+          "budgetMin": {
+            "type": "number",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endpointRecipient": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "HTTPS webhook that receives `match` payloads."
+          },
+          "eventEndpoint": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "HTTPS webhook that receives advert `event` payloads."
+          },
+          "excludedCities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "excludedSiteCategories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "expressions": {
+            "description": "Full text matching rules applied to the title or description."
+          },
+          "furnished": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "hidePropertyContact": {
+            "type": "boolean"
+          },
+          "includedCities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "includedDepartments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "includedSiteCategories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "landSurfaceMax": {
+            "type": "number",
+            "nullable": true
+          },
+          "landSurfaceMin": {
+            "type": "number",
+            "nullable": true
+          },
+          "lastAlertAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lat": {
+            "type": "number",
+            "nullable": true
+          },
+          "lon": {
+            "type": "number",
+            "nullable": true
+          },
+          "notificationEnabled": {
+            "type": "boolean"
+          },
+          "notificationRecipient": {
+            "type": "string",
+            "nullable": true
+          },
+          "pricePerMeterMax": {
+            "type": "number",
+            "nullable": true
+          },
+          "pricePerMeterMin": {
+            "type": "number",
+            "nullable": true
+          },
+          "propertyTypes": {
+            "type": "array",
+            "description": "Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`.",
+            "items": {
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+            }
+          },
+          "publisherTypes": {
+            "type": "array",
+            "description": "Individual `0`, Professional `1`.",
+            "items": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          "radius": {
+            "type": "number",
+            "nullable": true,
+            "description": "Distance in kilometers around `lat`/`lon`."
+          },
+          "roomMin": {
+            "type": "integer",
+            "nullable": true
+          },
+          "roomMax": {
+            "type": "integer",
+            "nullable": true
+          },
+          "subscribedEvents": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ad.update.price",
+                "ad.update.surface",
+                "ad.update.pictures",
+                "ad.update.expired",
+                "property.ad.create",
+                "property.ad.update"
+              ]
+            }
+          },
+          "surfaceMax": {
+            "type": "number",
+            "nullable": true
+          },
+          "surfaceMin": {
+            "type": "number",
+            "nullable": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "transactionType": {
+            "type": "integer",
+            "description": "Sell `0`, Rent `1`.",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "user": {
+            "type": "string"
+          },
+          "withCoherentPrice": {
+            "type": "boolean"
+          },
+          "withVirtualTour": {
+            "type": "boolean",
+            "nullable": true
+          }
+        }
+      },
+      "SearchCollection": {
+        "type": "object",
+        "description": "Paginated collection of searches.",
+        "properties": {
+          "hydra:member": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Search"
+            }
+          },
+          "hydra:totalItems": {
+            "type": "integer"
+          },
+          "hydra:view": {
+            "$ref": "#/components/schemas/HydraView"
+          },
+          "hydra:search": {
+            "$ref": "#/components/schemas/HydraSearch"
+          }
+        }
+      },
+      "SearchInput": {
+        "type": "object",
+        "required": [
+          "propertyTypes",
+          "title",
+          "transactionType"
+        ],
+        "properties": {
+          "bedroomMin": {
+            "type": "integer",
+            "description": "Minimum number of bedrooms in the property."
+          },
+          "bedroomMax": {
+            "type": "integer",
+            "description": "Maximum number of bedrooms in the property."
+          },
+          "budgetMax": {
+            "type": "number",
+            "description": "Maximum budget for the property."
+          },
+          "budgetMin": {
+            "type": "number",
+            "description": "Minimum budget for the property."
+          },
+          "endpointRecipient": {
+            "type": "string",
+            "format": "uri",
+            "description": "HTTPS webhook that receives `match` payloads whenever a property satisfies the search. Requires `notificationEnabled=true`."
+          },
+          "eventEndpoint": {
+            "type": "string",
+            "format": "uri",
+            "description": "HTTPS webhook that receives advert `event` payloads (price changes, expirations, etc.). Requires `notificationEnabled=true` and at least one entry in `subscribedEvents`."
+          },
+          "excludedCities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Cities to be excluded."
+          },
+          "excludedSites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Source sites to be excluded."
+          },
+          "excludedSiteCategories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Site categories to be excluded."
+          },
+          "expressions": {
+            "type": "array",
+            "description": "Full text matching including/excluding words & phrases in the title or the description of the property.",
+            "items": {}
+          },
+          "furnished": {
+            "type": "boolean",
+            "description": "Whether the property is furnished or not."
+          },
+          "geoAccuracy": {
+            "type": "number",
+            "description": "Geocoding confidence level. Use `1` to keep only house-number level matches and `2` to include neighborhood-level approximations. Leave empty to allow both."
+          },
+          "geoShapes": {
+            "type": "array",
+            "items": {},
+            "description": "Filters properties within specified geographic areas (arrays of `[lon, lat]` points forming polygons)."
+          },
+          "hidePropertyContact": {
+            "type": "boolean",
+            "description": "Whether to hide property contact information or not."
+          },
+          "includedCities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Included cities. Use the location autocomplete endpoint to get the desired city IRIs."
+          },
+          "includedDepartments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Included departments. Use the location autocomplete endpoint to get the desired department IRIs."
+          },
+          "includedSiteCategories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Included site categories."
+          },
+          "includedSites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Source sites to be included."
+          },
+          "includedZipcodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Included zipcodes."
+          },
+          "includedZipcodesInsee": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Included INSEE codes (used to infer the cities associated with the search)."
+          },
+          "landSurfaceMax": {
+            "type": "number",
+            "description": "Maximum land surface."
+          },
+          "landSurfaceMin": {
+            "type": "number",
+            "description": "Minimum land surface."
+          },
+          "lat": {
+            "type": "number",
+            "description": "Latitude of the center point used for radial filtering. Provide together with `lon`."
+          },
+          "lon": {
+            "type": "number",
+            "description": "Longitude of the center point used for radial filtering. Provide together with `lat`."
+          },
+          "notificationEnabled": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enables delivery of matches and events either by webhook (`endpointRecipient`, `eventEndpoint`) or by email (`notificationRecipient`)."
+          },
+          "notificationRecipient": {
+            "type": "string",
+            "description": "Email address that receives alert summaries when `notificationEnabled=true`."
+          },
+          "pricePerMeterMax": {
+            "type": "number",
+            "description": "Maximum price per meter."
+          },
+          "pricePerMeterMin": {
+            "type": "number",
+            "description": "Minimum price per meter."
+          },
+          "propertyTypes": {
+            "type": "array",
+            "description": "Type of property. Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`.",
+            "items": {
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+            }
+          },
+          "publisherTypes": {
+            "type": "array",
+            "description": "Type of publisher. Individual `0`, Professional `1`.",
+            "items": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          "radius": {
+            "type": "number",
+            "description": "Distance in kilometers around the provided `lat`/`lon`."
+          },
+          "roomMin": {
+            "type": "integer",
+            "description": "Minimum number of rooms."
+          },
+          "roomMax": {
+            "type": "integer",
+            "description": "Maximum number of rooms."
+          },
+          "subscribedEvents": {
+            "type": "array",
+            "description": "Event codes you want to receive on the `eventEndpoint`.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ad.update.price",
+                "ad.update.surface",
+                "ad.update.pictures",
+                "ad.update.expired",
+                "property.ad.create",
+                "property.ad.update"
+              ]
+            }
+          },
+          "surfaceMax": {
+            "type": "number",
+            "description": "Maximum property surface area."
+          },
+          "surfaceMin": {
+            "type": "number",
+            "description": "Minimum property surface area."
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the created search."
+          },
+          "transactionType": {
+            "type": "integer",
+            "description": "Type of transaction. Sell `0`, Rent `1`.",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "withCoherentPrice": {
+            "type": "boolean",
+            "default": true,
+            "description": "Excludes adverts whose price has been flagged as incoherent/outlier by quality checks. Set to `false` to return every result regardless of price sanity."
+          },
+          "withVirtualTour": {
+            "type": "boolean",
+            "description": "Whether the property includes a virtual tour."
+          }
+        }
+      }
+    }
+  }
+}

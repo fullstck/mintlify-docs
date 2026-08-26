@@ -159,8 +159,8 @@ description: "Creates a new search"
   Type of transaction. Sell `0`, Rent `1`. Example: `transactionType=0`
 </ParamField>
 
-<ParamField body="withCoherentPrice" type="boolean" default="true">
-  Excludes adverts whose price has been flagged as incoherent/outlier by our quality checks. Set to `false` to return every result regardless of price sanity.
+<ParamField body="withCoherentPrice" type="boolean">
+  Price coherence filter. `true` returns only adverts whose price passes our coherence checks; `false` returns only adverts flagged as incoherent. Set to `null` (or omit) to get every result regardless of price coherence.
 </ParamField>
 
 <ParamField body="withVirtualTour" type="boolean" >

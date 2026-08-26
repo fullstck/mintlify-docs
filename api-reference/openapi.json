@@ -740,10 +740,9 @@
           {
             "name": "withCoherentPrice",
             "in": "query",
-            "description": "Filter properties with coherent price.",
+            "description": "Price coherence filter. `true` returns only properties whose price passes our coherence checks; `false` returns only properties flagged as incoherent. Omit the parameter to get all properties regardless of price coherence.",
             "schema": {
-              "type": "boolean",
-              "default": true
+              "type": "boolean"
             }
           },
           {
@@ -1819,10 +1818,9 @@
           {
             "name": "withCoherentPrice",
             "in": "query",
-            "description": "Filter properties with coherent price.",
+            "description": "Price coherence filter. `true` returns only properties whose price passes our coherence checks; `false` returns only properties flagged as incoherent. Omit the parameter to get all properties regardless of price coherence.",
             "schema": {
-              "type": "boolean",
-              "default": true
+              "type": "boolean"
             }
           },
           {
@@ -3716,8 +3714,8 @@
           },
           "withCoherentPrice": {
             "type": "boolean",
-            "default": true,
-            "description": "Excludes adverts whose price has been flagged as incoherent/outlier by quality checks. Set to `false` to return every result regardless of price sanity."
+            "nullable": true,
+            "description": "Price coherence filter. `true` returns only adverts whose price passes our coherence checks; `false` returns only adverts flagged as incoherent. Set to `null` (or omit) to get every result regardless of price coherence."
           },
           "withVirtualTour": {
             "type": "boolean",

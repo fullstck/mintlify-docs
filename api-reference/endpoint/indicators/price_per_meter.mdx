@@ -316,8 +316,8 @@ description: "This endpoint returns the price per meter `average`, `median` and 
   Restrict results to properties that have a resolved location.
 </ParamField>
 
-<ParamField query="withCoherentPrice" type="boolean" default="true">
-  Filter properties with coherent price. Example: withCoherentPrice=true
+<ParamField query="withCoherentPrice" type="boolean">
+  Price coherence filter. `true` returns only properties whose price passes our coherence checks; `false` returns only properties flagged as incoherent. Omit the parameter to get all properties regardless of price coherence. Example: withCoherentPrice=true
 </ParamField>
 
 <ParamField query="withVirtualTour" type="boolean">

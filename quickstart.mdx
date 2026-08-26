@@ -71,7 +71,7 @@ The example above uses only documented enum values:
 | `propertyTypes[]` | `1` | House — Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6` |
 | `transactionType` | `0` | Sell `0`, Rent `1` |
 | `includedDepartments[]` | `departments/77` | Restrict to a department — get ids from [Locations](/api-reference/endpoint/indicators/locations) |
-| `withCoherentPrice` | `true` | Exclude listings whose price is flagged as incoherent |
+| `withCoherentPrice` | `true` | `true` keeps only listings with a coherent price, `false` keeps only incoherent ones — omit it to get all listings |
 | `budgetMin` / `budgetMax` | `1800000` / `1900000` | Budget range, in euros |
 
 The [Properties reference](/api-reference/endpoint/properties/get_collection) lists

@@ -166,7 +166,7 @@ description: "Updates an existing search"
 </ParamField>
 
 <ParamField body="withCoherentPrice" type="boolean">
-  Price coherence filter. `true` returns only adverts whose price passes our coherence checks; `false` returns only adverts flagged as incoherent. Set to `null` (or omit) to get every result regardless of price coherence.
+  Price coherence filter. `true` returns adverts whose price passes our coherence checks; `false` returns adverts flagged as incoherent — both also include adverts whose price has not been assessed. Set to `null` (or send an empty value) to disable filtering. If omitted, defaults to `true`.
 </ParamField>
 
 <ParamField body="withVirtualTour" type="boolean">

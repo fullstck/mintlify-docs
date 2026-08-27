@@ -359,7 +359,7 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="withCoherentPrice" type="boolean">
-  Price coherence filter. `true` returns only properties whose price passes our coherence checks; `false` returns only properties flagged as incoherent. Omit the parameter to get all properties regardless of price coherence. Example: `withCoherentPrice=true`
+  Price coherence filter. `true` returns properties whose price passes our coherence checks; `false` returns properties flagged as incoherent — both also include properties whose price has not been assessed. Set to `null` (or send an empty value) to disable filtering. If omitted, defaults to `true`. Example: `withCoherentPrice=true`
 </ParamField>
 
 <ParamField query="withLocation" type="boolean" >

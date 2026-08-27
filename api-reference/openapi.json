@@ -740,7 +740,7 @@
           {
             "name": "withCoherentPrice",
             "in": "query",
-            "description": "Price coherence filter. `true` returns only properties whose price passes our coherence checks; `false` returns only properties flagged as incoherent. Omit the parameter to get all properties regardless of price coherence.",
+            "description": "Price coherence filter. `true` returns properties whose price passes our coherence checks; `false` returns properties flagged as incoherent — both also include properties whose price has not been assessed. Set to `null` (or send an empty value) to disable filtering. If omitted, defaults to `true`.",
             "schema": {
               "type": "boolean"
             }
@@ -1818,7 +1818,7 @@
           {
             "name": "withCoherentPrice",
             "in": "query",
-            "description": "Price coherence filter. `true` returns only properties whose price passes our coherence checks; `false` returns only properties flagged as incoherent. Omit the parameter to get all properties regardless of price coherence.",
+            "description": "Price coherence filter. `true` returns properties whose price passes our coherence checks; `false` returns properties flagged as incoherent — both also include properties whose price has not been assessed. Set to `null` (or send an empty value) to disable filtering. If omitted, defaults to `true`.",
             "schema": {
               "type": "boolean"
             }
@@ -3715,7 +3715,7 @@
           "withCoherentPrice": {
             "type": "boolean",
             "nullable": true,
-            "description": "Price coherence filter. `true` returns only adverts whose price passes our coherence checks; `false` returns only adverts flagged as incoherent. Set to `null` (or omit) to get every result regardless of price coherence."
+            "description": "Price coherence filter. `true` returns adverts whose price passes our coherence checks; `false` returns adverts flagged as incoherent — both also include adverts whose price has not been assessed. Set to `null` (or send an empty value) to disable filtering. If omitted, defaults to `true`."
           },
           "withVirtualTour": {
             "type": "boolean",

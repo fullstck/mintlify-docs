@@ -57,7 +57,7 @@ description: "Updates an existing search"
   Whether the property is furnished or not.
 </ParamField>
 
-<ParamField body="geoAccuracy" type="array">
+<ParamField body="geoAccuracy" type="number">
   Filters properties by geocoding confidence level. Use `1` to keep only house-number level matches and `2` to include neighborhood-level approximations. Leave empty to allow both.
 </ParamField>
 
@@ -125,15 +125,15 @@ description: "Updates an existing search"
   Minimum price per meter.
 </ParamField>
 
-<ParamField body="propertyTypes" type="integer" required>
+<ParamField body="propertyTypes" type="number[]" required>
   Type of property. Apartment `0`, House `1`, Building `2`, Parking `3`, Office `4`, Land `5`, Shop `6`. Example: `propertyTypes[]=0&propertyTypes[]=1`
 </ParamField>
 
-<ParamField body="publisherTypes" type="integer">
+<ParamField body="publisherTypes" type="array">
   Type of publisher. Individual `0`, Professional `1`. Example: `publisherTypes[]=0&publisherTypes[]=1`
 </ParamField>
 
-<ParamField body="radius" type="integer">
+<ParamField body="radius" type="number">
   Distance in kilometers around the provided `lat`/`lon`. Example: `radius=20`
 </ParamField>
 
@@ -182,15 +182,15 @@ description: "Updates an existing search"
     "bedroomMin": 0,
     "budgetMax": 0,
     "budgetMin": 0,
-    "endpointRecipient": "https://www.mycompany.com/webhook_melo_match",
-    "eventEndpoint": "https://www.mycompany.com/webhook_melo_updates",
+    "endpointRecipient": "https://www.mycompany.com/webhook_match",
+    "eventEndpoint": "https://www.mycompany.com/webhook_updates",
     "excludedCities": [
       "string"
     ],
     "excludedSiteCategories": [
       "string"
     ],
-    "expressions": "expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=true&expressions[1][0][word]=viager&expressions[1][0][options][includes]=true&expressions[1][0][options][strict]=true",
+    "expressions": [],
     "furnished": true,
     "hidePropertyContact": true,
     "includedCities": [
@@ -204,15 +204,15 @@ description: "Updates an existing search"
     ],
     "landSurfaceMax": 0,
     "landSurfaceMin": 0,
-    "lat": "48.864716",
-    "lon": "2.349014",
+    "lat": 48.864716,
+    "lon": 2.349014,
     "notificationEnabled": false,
     "notificationRecipient": "foo@bar.com",
     "pricePerMeterMax": 0,
     "pricePerMeterMin": 0,
-    "propertyTypes": 3,
-    "publisherTypes": 3,
-    "radius": "20",
+    "propertyTypes": [0, 1],
+    "publisherTypes": [0, 1],
+    "radius": 20,
     "roomMin": 0,
     "subscribedEvents": [
       "ad.update.price"
@@ -220,7 +220,7 @@ description: "Updates an existing search"
     "surfaceMax": 0,
     "surfaceMin": 0,
     "title": "string",
-    "transactionType": "0",
+    "transactionType": 0,
     "withCoherentPrice": true,
     "withVirtualTour": true
   }'
@@ -233,15 +233,15 @@ description: "Updates an existing search"
     "bedroomMin": 0,
     "budgetMax": 0,
     "budgetMin": 0,
-    "endpointRecipient": "https://www.mycompany.com/webhook_melo_match",
-    "eventEndpoint": "https://www.mycompany.com/webhook_melo_updates",
+    "endpointRecipient": "https://www.mycompany.com/webhook_match",
+    "eventEndpoint": "https://www.mycompany.com/webhook_updates",
     "excludedCities": [
       "string"
     ],
     "excludedSiteCategories": [
       "string"
     ],
-    "expressions": "expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=true&expressions[1][0][word]=viager&expressions[1][0][options][includes]=true&expressions[1][0][options][strict]=true",
+    "expressions": [],
     "furnished": true,
     "hidePropertyContact": true,
     "includedCities": [
@@ -255,15 +255,15 @@ description: "Updates an existing search"
     ],
     "landSurfaceMax": 0,
     "landSurfaceMin": 0,
-    "lat": "48.864716",
-    "lon": "2.349014",
+    "lat": 48.864716,
+    "lon": 2.349014,
     "notificationEnabled": false,
     "notificationRecipient": "foo@bar.com",
     "pricePerMeterMax": 0,
     "pricePerMeterMin": 0,
-    "propertyTypes": 3,
-    "publisherTypes": 3,
-    "radius": "20",
+    "propertyTypes": [0, 1],
+    "publisherTypes": [0, 1],
+    "radius": 20,
     "roomMin": 0,
     "subscribedEvents": [
       "ad.update.price"
@@ -271,7 +271,7 @@ description: "Updates an existing search"
     "surfaceMax": 0,
     "surfaceMin": 0,
     "title": "string",
-    "transactionType": "0",
+    "transactionType": 0,
     "withCoherentPrice": true,
     "withVirtualTour": true
   }

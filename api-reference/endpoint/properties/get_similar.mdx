@@ -25,7 +25,7 @@ description: "Returns a collection of properties similar to given property."
 </ParamField>
 
 <ParamField query="order[updatedAt]" type="string">
-  Order properties by update date (API parameter name includes the double “d”). Can be `asc` or `desc`.
+  Order properties by update date. Can be `asc` or `desc`.
 </ParamField>
 
 <ParamField query="order[pricePerMeter]" type="string" default="desc">
@@ -40,10 +40,6 @@ description: "Returns a collection of properties similar to given property."
   Order properties by surface. Can be `asc` or `desc`.
 </ParamField>
 
-<ParamField query="order[updatedAt]" type="string">
-  Order properties by update date. Can be `asc` or `desc`.
-</ParamField>
-
 <ParamField query="page" type="integer" default="1">
   The collection page number.
 </ParamField>
@@ -52,7 +48,7 @@ description: "Returns a collection of properties similar to given property."
   ```bash Example Request
   curl --location -g --request GET 'https://api.stream.estate/documents/properties/{id}/similar-properties' \
   --header 'Content-Type: application/json' \
-  --header 'X-API-KEY: <api_key>' \
+  --header 'X-API-KEY: <api_key>'
   ```
 </RequestExample>
 
@@ -160,11 +156,11 @@ description: "Returns a collection of properties similar to given property."
           ],
           "hasGroupedByName": false,
           "hasGroupedByZipcode": false,
-          "id": 30950,
-          "insee": "75116",
-          "locations": {
-            "lat": 48.8530933,
-            "lon": 2.2487626
+          "id": 30953,
+          "insee": "75118",
+          "location": {
+            "lat": 48.891305,
+            "lon": 2.3529867
           },
           "name": "Paris 18e",
           "open": true,
@@ -187,8 +183,8 @@ description: "Returns a collection of properties similar to given property."
         "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
         "lastCrawledAt": "2023-06-28T18:03:13+02:00",
         "locations": {
-          "lat": 48.8530933,
-          "lon": 2.2487626
+          "lat": 48.891305,
+          "lon": 2.3529867
         },
         "pictures": [
           "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
@@ -212,7 +208,7 @@ description: "Returns a collection of properties similar to given property."
                 "id": 20,
                 "name": "Ligne 12",
                 "number": "12",
-                "routeName": "Front Populaire ↔ Mairie d’Issy"
+                "routeName": "Mairie d’Aubervilliers ↔ Mairie d’Issy"
               }
             ],
             "name": "Jules Joffrin"
@@ -225,14 +221,14 @@ description: "Returns a collection of properties similar to given property."
                 "id": 11,
                 "name": "Ligne 4",
                 "number": "4",
-                "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+                "routeName": "Porte de Clignancourt ↔ Bagneux–Lucie Aubrac"
               },
               {
                 "color": "#128B5B",
                 "id": 20,
                 "name": "Ligne 12",
                 "number": "12",
-                "routeName": "Front Populaire ↔ Mairie d’Issy"
+                "routeName": "Mairie d’Aubervilliers ↔ Mairie d’Issy"
               }
             ],
             "name": "Marcadet-Poissonniers"
@@ -245,7 +241,7 @@ description: "Returns a collection of properties similar to given property."
         "uuid": "38cb65b9-2965-4bd0-bc9b-2b8a8be7c457"
       }
     ],
-    "hydra:totalItems": 0,
+    "hydra:totalItems": 1,
     "hydra:view": {
       "@id": "string",
       "@type": "string",

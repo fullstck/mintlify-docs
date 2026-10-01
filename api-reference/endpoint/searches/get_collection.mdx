@@ -26,7 +26,7 @@ description: "Returns a collection of your existing searches matching given crit
   ```bash Example Request
   curl --location -g --request GET 'https://api.stream.estate/searches' \
   --header 'Content-Type: application/json' \
-  --header 'X-API-KEY: <api_key>' \
+  --header 'X-API-KEY: <api_key>'
   ```
 </RequestExample>
 
@@ -42,8 +42,8 @@ description: "Returns a collection of your existing searches matching given crit
         "budgetMax": 0,
         "budgetMin": 0,
         "createdAt": "2019-08-24T14:15:22Z",
-        "endpointRecipient": "https://www.mycompany.com/webhook_melo_match",
-        "eventEndpoint": "https://www.mycompany.com/webhook_melo_updates",
+        "endpointRecipient": "https://www.mycompany.com/webhook_match",
+        "eventEndpoint": "https://www.mycompany.com/webhook_updates",
         "excludedCities": [
           {
             "@context": "string",
@@ -64,7 +64,7 @@ description: "Returns a collection of your existing searches matching given crit
             "name": "string"
           }
         ],
-        "expressions": "expressions[0][0][options][includes]=true&expressions[0][0][options][strict]=true&expressions[1][0][word]=viager&expressions[1][0][options][includes]=true&expressions[1][0][options][strict]=true",
+        "expressions": [],
         "furnished": true,
         "hidePropertyContact": true,
         "includedCities": [
@@ -101,15 +101,15 @@ description: "Returns a collection of your existing searches matching given crit
         "landSurfaceMax": 0,
         "landSurfaceMin": 0,
         "lastAlertAt": "2019-08-24T14:15:22Z",
-        "lat": "48.864716",
-        "lon": "2.349014",
+        "lat": 48.864716,
+        "lon": 2.349014,
         "notificationEnabled": false,
         "notificationRecipient": "foo@bar.com",
         "pricePerMeterMax": 0,
         "pricePerMeterMin": 0,
-        "propertyTypes": 3,
-        "publisherTypes": 3,
-        "radius": "20",
+        "propertyTypes": [0, 1],
+        "publisherTypes": [0, 1],
+        "radius": 20,
         "roomMin": 0,
         "subscribedEvents": [
           "ad.update.price"
@@ -118,14 +118,14 @@ description: "Returns a collection of your existing searches matching given crit
         "surfaceMin": 0,
         "title": "string",
         "token": "string",
-        "transactionType": "0",
+        "transactionType": 0,
         "updatedAt": "2019-08-24T14:15:22Z",
         "user": "string",
         "withCoherentPrice": true,
         "withVirtualTour": true
       }
     ],
-    "hydra:totalItems": 0,
+    "hydra:totalItems": 1,
     "hydra:view": {
       "@id": "string",
       "@type": "string",

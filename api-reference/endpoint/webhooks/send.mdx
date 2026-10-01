@@ -4,7 +4,7 @@ api: "GET /webhook-tester"
 description: "This endpoint will simulate a `match` or an `event` to the given endpoint."
 ---
 <Note>
-Please read our [Concepts](https://docs.stream.estate/concepts) to understand the differences between a `property`, a `match`, an `advert` and an `event`.
+Please read our [Concepts](https://docs.stream.estate/api-reference/concepts) to understand the differences between a `property`, a `match`, an `advert` and an `event`.
 </Note>
 
 <Tip>
@@ -39,22 +39,22 @@ Your server implementation should return a `200` HTTP status code if the data wa
 
 
 
-### Path
+### Query parameters
 
 <ParamField query="endpoint" type="url" required placeholder="https://hook.eu1.make.com/...">
   Endpoint where the match or the event will be sent to.
 </ParamField>
 
-<ParamField query="eventType" type="string" required placeholder="ad.update.price">
-  The type of event you want to trigger.
+<ParamField query="eventType" type="string" placeholder="ad.update.price">
+  The type of event you want to trigger. Leave it empty to simulate a `match`.
 </ParamField>
 
 <RequestExample>
 
 ```bash Example Request
-curl --location --request GET 'https://api.stream.estate/webhook-tester' \
+curl --location --request GET 'https://api.stream.estate/webhook-tester?endpoint=https://example.com/webhook&eventType=ad.update.price' \
 --header 'Content-Type: application/json' \
---header 'X-API-KEY: <api_key>' \
+--header 'X-API-KEY: <api_key>'
 ```
 </RequestExample>
 
@@ -67,7 +67,7 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
     "fieldName": "price",
     "fieldOldValue": "900",
     "fieldNewValue": "875",
-    "percentVariation": "-2.81",
+    "percentVariation": -2.78,
     "createdAt": "2019-08-24T14:15:22Z"
   },
   "match": {
@@ -178,11 +178,11 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
         ],
         "hasGroupedByName": false,
         "hasGroupedByZipcode": false,
-        "id": 30950,
-        "insee": "75116",
+        "id": 30953,
+        "insee": "75118",
         "location": {
-          "lat": 48.8530933,
-          "lon": 2.2487626
+          "lat": 48.891305,
+          "lon": 2.3529867
         },
         "name": "Paris 18e",
         "open": true,
@@ -205,8 +205,8 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
       "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
       "lastCrawledAt": "2024-03-26T10:39:41+01:00",
       "locations": {
-        "lat": 48.8530933,
-        "lon": 2.2487626
+        "lat": 48.891305,
+        "lon": 2.3529867
       },
       "pictures": [
         "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
@@ -230,7 +230,7 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
               "id": 20,
               "name": "Ligne 12",
               "number": "12",
-              "routeName": "Front Populaire ↔ Mairie d'Issy"
+              "routeName": "Mairie d'Aubervilliers ↔ Mairie d'Issy"
             }
           ],
           "name": "Jules Joffrin"
@@ -243,14 +243,14 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
               "id": 11,
               "name": "Ligne 4",
               "number": "4",
-              "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+              "routeName": "Porte de Clignancourt ↔ Bagneux–Lucie Aubrac"
             },
             {
               "color": "#128B5B",
               "id": 20,
               "name": "Ligne 12",
               "number": "12",
-              "routeName": "Front Populaire ↔ Mairie d'Issy"
+              "routeName": "Mairie d'Aubervilliers ↔ Mairie d'Issy"
             }
           ],
           "name": "Marcadet-Poissonniers"
@@ -375,11 +375,11 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
       ],
       "hasGroupedByName": false,
       "hasGroupedByZipcode": false,
-      "id": 30950,
-      "insee": "75116",
+      "id": 30953,
+      "insee": "75118",
       "location": {
-        "lat": 48.8530933,
-        "lon": 2.2487626
+        "lat": 48.891305,
+        "lon": 2.3529867
       },
       "name": "Paris 18e",
       "open": true,
@@ -402,8 +402,8 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
     "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
     "lastCrawledAt": "2024-02-20T14:50:32+01:00",
     "locations": {
-      "lat": 48.8530933,
-      "lon": 2.2487626
+      "lat": 48.891305,
+      "lon": 2.3529867
     },
     "pictures": [
       "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
@@ -427,7 +427,7 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
             "id": 20,
             "name": "Ligne 12",
             "number": "12",
-            "routeName": "Front Populaire ↔ Mairie d'Issy"
+            "routeName": "Mairie d'Aubervilliers ↔ Mairie d'Issy"
           }
         ],
         "name": "Jules Joffrin"
@@ -440,14 +440,14 @@ curl --location --request GET 'https://api.stream.estate/webhook-tester' \
             "id": 11,
             "name": "Ligne 4",
             "number": "4",
-            "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+            "routeName": "Porte de Clignancourt ↔ Bagneux–Lucie Aubrac"
           },
           {
             "color": "#128B5B",
             "id": 20,
             "name": "Ligne 12",
             "number": "12",
-            "routeName": "Front Populaire ↔ Mairie d'Issy"
+            "routeName": "Mairie d'Aubervilliers ↔ Mairie d'Issy"
           }
         ],
         "name": "Marcadet-Poissonniers"

@@ -4,7 +4,7 @@ title: "Authentication"
 
 Welcome to the beginning of your journey with our API. This page will guide you through the initial steps of understanding and utilizing our API to its fullest potential.
 
-If you want to get an access and try out the API, please [sign up](https://stream.estate/signup) and create an API key in your settings. It is important to keep your API Key private and secure.
+If you want to get access and try out the API, please [sign up](https://stream.estate/signup) and create an API key on the **API Keys** page of your [console](https://stream.estate/console). It is important to keep your API Key private and secure.
 
 ## Basic Example
 
@@ -13,5 +13,5 @@ All API calls require the `X-API-KEY` header. For an example of how to do this, 
 ```bash Example Request
 curl --location -g --request GET 'https://api.stream.estate/documents/properties/{id}' \
 --header 'Content-Type: application/json' \
---header 'X-API-KEY: <api_key>' \
+--header 'X-API-KEY: <api_key>'
 ```

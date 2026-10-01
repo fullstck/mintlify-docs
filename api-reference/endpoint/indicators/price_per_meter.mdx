@@ -161,15 +161,15 @@ description: "This endpoint returns the price per meter `average`, `median` and 
 </ParamField>
 
 <ParamField query="greenHouseGasCategories" type="array">
-  Green house gas performance letter array of the property.
+  Greenhouse gas performance letter array of the property.
 </ParamField>
 
 <ParamField query="greenHouseGasValueMax" type="integer">
-  The maximum value of green house gas of the property.
+  The maximum value of greenhouse gas of the property.
 </ParamField>
 
 <ParamField query="greenHouseGasValueMin" type="integer">
-  The minimum value of green house gas of the property.
+  The minimum value of greenhouse gas of the property.
 </ParamField>
 
 <ParamField query="includedCities" type="array">
@@ -177,7 +177,7 @@ description: "This endpoint returns the price per meter `average`, `median` and 
 </ParamField>
 
 <ParamField query="includedDepartments" type="array">
-  Located in given departments. Example: includedDepartments\[]=includedDepartments\[]=/departments/77
+  Located in given departments. Example: includedDepartments\[]=/departments/77
 </ParamField>
 
 <ParamField query="includedInseeCodes" type="array">
@@ -216,11 +216,11 @@ description: "This endpoint returns the price per meter `average`, `median` and 
   Greater than or equal to lotCountMin. Example: lotCountMin=4
 </ParamField>
 
-<ParamField query="order[createdAt]" type="integer" default="desc">
+<ParamField query="order[createdAt]" type="string" default="desc">
   Order properties by creation date.
 </ParamField>
 
-<ParamField query="order[updatedAt]" type="integer">
+<ParamField query="order[updatedAt]" type="string">
   Order properties by update date.
 </ParamField>
 
@@ -252,7 +252,7 @@ description: "This endpoint returns the price per meter `average`, `median` and 
   0 : INDIVIDUAL, 1 : PROFESSIONAL
 </ParamField>
 
-<ParamField query="radius" type="integer">
+<ParamField query="radius" type="number">
   Distance expressed in kilometers. Used if lat & lon are set. Example: radius=20
 </ParamField>
 
@@ -305,7 +305,7 @@ description: "This endpoint returns the price per meter `average`, `median` and 
 </ParamField>
 
 <ParamField query="toUpdatedAt" type="date">
-  Since datetime (inclusive). Example: toUpdatedAt=2021-05-07 12:42:42
+  Until datetime (inclusive). Example: toUpdatedAt=2021-05-07 12:42:42
 </ParamField>
 
 <ParamField query="transactionType" type="integer">

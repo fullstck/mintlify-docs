@@ -20,7 +20,7 @@ description: "This endpoint returns cities matching the given criteria."
 
 <ParamField query="polygon" type="string">
  Filter by cities inside a given polygon defined by GPS coordinates.
- Example: `polygon=polygon[0][lat]=43.12&polygon[0][lon]=5.93&polygon[1][lat]=43.12&polygon[1][lon]=6.01&polygon[2][lat]=43.07&polygon[2][lon]=6.01&polygon[3][lat]=43.07&polygon[3][lon]=5.93`
+ Example: `polygon[0][lat]=43.12&polygon[0][lon]=5.93&polygon[1][lat]=43.12&polygon[1][lon]=6.01&polygon[2][lat]=43.07&polygon[2][lon]=6.01&polygon[3][lat]=43.07&polygon[3][lon]=5.93`
 </ParamField>
 
 <ParamField query="libelle" type="string">
@@ -55,8 +55,8 @@ description: "This endpoint returns cities matching the given criteria."
 <RequestExample>
 ```bash Example Request
 curl --location -g --request GET 'https://api.stream.estate/cities' \
---header 'Content-Type: application/json'
---header 'X-API-KEY:'
+--header 'Content-Type: application/json' \
+--header 'X-API-KEY: <api_key>'
 ```
 </RequestExample>
 <ResponseExample>

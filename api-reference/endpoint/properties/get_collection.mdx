@@ -104,7 +104,7 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="excludedSites" type="array">
-  Sources sites to be excluded.
+  Source sites to be excluded.
 </ParamField>
 
 <ParamField query="excludedZipcodes" type="array">
@@ -158,11 +158,11 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="geoAccuracy" type="array">
- Filters properties by geographic accuracy level. "1" (HOUSE NUMBER - precise location at house number level), "2" (NEIGHBORHOOD - broader location within a neighborhood). Example: geoAccuracy[]=0
+ Filters properties by geographic accuracy level. "1" (HOUSE NUMBER - precise location at house number level), "2" (NEIGHBORHOOD - broader location within a neighborhood). Example: geoAccuracy[]=1
 </ParamField>
 
 <ParamField query="geoShapes" type="array">
-  Filters properties within specified geographic areas. Example: `geoShapes=geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
+  Filters properties within specified geographic areas. Example: `geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
 </ParamField>
 
 <ParamField query="greenHouseGasCategories" type="array">
@@ -190,7 +190,7 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="includedSites" type="array">
-  Sources sites to be included.
+  Source sites to be included.
 </ParamField>
 
 <ParamField query="includedZipcodes" type="array">
@@ -209,11 +209,11 @@ Example: energyCategories[]=A&energyCategories[]=B
   The number of items per page. Max is `30`.
 </ParamField>
 
-<ParamField body="landSurfaceMax" type="number" >
+<ParamField query="landSurfaceMax" type="number" >
   Maximum land surface.
 </ParamField>
 
-<ParamField body="landSurfaceMin" type="number"  >
+<ParamField query="landSurfaceMin" type="number"  >
   Minimum land surface.
 </ParamField>
 
@@ -222,7 +222,7 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="lon" type="number">
-  Longitude. Will work if latitude exists in the property. Example: `lon=2.349014`
+  Longitude. Will work if longitude exists in the property. Example: `lon=2.349014`
 </ParamField>
 
 <ParamField query="lotCountMax" type="number" >
@@ -238,7 +238,7 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="order[updatedAt]" type="string">
-  Order properties by update date (API parameter name includes the double “d”). Can be `asc` or `desc`.
+  Order properties by update date. Can be `asc` or `desc`.
 </ParamField>
 
 <ParamField query="order[pricePerMeter]" type="string"  default="desc">
@@ -251,10 +251,6 @@ Example: energyCategories[]=A&energyCategories[]=B
 
 <ParamField query="order[surface]" type="string">
   Order properties by surface. Can be `asc` or `desc`.
-</ParamField>
-
-<ParamField query="order[updatedAt]" type="string">
-  Order properties by update date. Can be `asc` or `desc`.
 </ParamField>
 
 <ParamField query="page" type="number" default="1">
@@ -324,13 +320,13 @@ Example: energyCategories[]=A&energyCategories[]=B
 <ParamField query="sortMode" type="string"  default="property">
   Whether to sort results by properties or by adverts. 
   
-  If `property` is chosen, `fromDate` and `toDate` parameters will be ***overridden*** so that the results will be sorted by the `createdAt` of each `property`. 
+  If `property` is chosen, `fromDate` and `toDate` apply to the `property` root object and the results are sorted by the `createdAt` of each `property`. 
   
-  If `advert` is chosen: `fromDate` and `toDate` parameters will be ***overridden*** so that the results will be sorted by `createdAt` of each `advert`.
+  If `advert` is chosen, `fromDate` and `toDate` apply to the nested `adverts` and the results are sorted by the `createdAt` of each `advert`.
   
   Example: `sortMode=property`
   
-  Please check our [glossary](/glossary) for more information about the distinction between adverts and properties.
+  Please check our [Concepts page](/api-reference/concepts) for more information about the distinction between adverts and properties.
 </ParamField>
 
 <ParamField query="surfaceMax" type="number" >
@@ -346,7 +342,7 @@ Example: energyCategories[]=A&energyCategories[]=B
 </ParamField>
 
 <ParamField query="toExpiredAt" type="date">
-  Date from which the ***advert*** is expired — inclusive.
+  Date until which the ***advert*** is expired — inclusive.
   Example: `toExpiredAt=2021-05-07 12:42:42`
 </ParamField>
 
@@ -396,7 +392,7 @@ params = {
 
 headers = {
   'Content-Type': 'application/json',
-  'X-API-KEY': process.env.STREAMESTATE_API_KEY
+  'X-API-KEY': '<api_key>'
 }
 
 response = requests.request("GET", url, headers=headers, params=params)
@@ -511,11 +507,11 @@ print(response.json())
         ],
         "hasGroupedByName": false,
         "hasGroupedByZipcode": false,
-        "id": 30950,
-        "insee": "75116",
-        "locations": {
-          "lat": 48.8530933,
-          "lon": 2.2487626
+        "id": 30953,
+        "insee": "75118",
+        "location": {
+          "lat": 48.891305,
+          "lon": 2.3529867
         },
         "name": "Paris 18e",
         "open": true,
@@ -538,8 +534,8 @@ print(response.json())
       "lastCrawledAdvert": "21f2a17b-dae3-4ea4-976f-e521cebfe609",
       "lastCrawledAt": "2023-05-23T23:48:47+02:00",
       "locations": {
-        "lat": 48.8530933,
-        "lon": 2.2487626
+        "lat": 48.891305,
+        "lon": 2.3529867
       },
       "pictures": [
         "https://pictures.notif.immo/properties/2021/05/10/10/a20cbdc44632c63f89aad2e6d9d049.jpg",
@@ -563,7 +559,7 @@ print(response.json())
               "id": 20,
               "name": "Ligne 12",
               "number": "12",
-              "routeName": "Front Populaire ↔ Mairie d’Issy"
+              "routeName": "Mairie d’Aubervilliers ↔ Mairie d’Issy"
             }
           ],
           "name": "Jules Joffrin"
@@ -576,14 +572,14 @@ print(response.json())
               "id": 11,
               "name": "Ligne 4",
               "number": "4",
-              "routeName": "Porte de Clignancourt ↔ Mairie de Montrouge"
+              "routeName": "Porte de Clignancourt ↔ Bagneux–Lucie Aubrac"
             },
             {
               "color": "#128B5B",
               "id": 20,
               "name": "Ligne 12",
               "number": "12",
-              "routeName": "Front Populaire ↔ Mairie d’Issy"
+              "routeName": "Mairie d’Aubervilliers ↔ Mairie d’Issy"
             }
           ],
           "name": "Marcadet-Poissonniers"
@@ -596,7 +592,7 @@ print(response.json())
       "uuid": "38cb65b9-2965-4bd0-bc9b-2b8a8be7c457"
     }
   ],
-  "hydra:totalItems": 0,
+  "hydra:totalItems": 1,
   "hydra:view": {
     "@id": "string",
     "@type": "string",

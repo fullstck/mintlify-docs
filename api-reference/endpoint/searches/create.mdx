@@ -56,7 +56,7 @@ description: "Creates a new search"
 </ParamField>
 
 <ParamField body="geoShapes" type="array">
-  Filters properties within specified geographic areas. Example: `geoShapes=geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
+  Filters properties within specified geographic areas. Example: `geoShapes[0][0][0]=6.063201&geoShapes[0][0][1]=44.549092&geoShapes[0][1][0]=6.063201&geoShapes[0][1][1]=44.543009&geoShapes[0][2][0]=6.073453&geoShapes[0][2][1]=44.543293&geoShapes[0][3][0]=6.073453&geoShapes[0][3][1]=44.549092&geoShapes[0][4][0]=6.063201&geoShapes[0][4][1]=44.549092`.
 </ParamField>
 
 <ParamField body="hidePropertyContact" type="boolean">
@@ -68,7 +68,7 @@ description: "Creates a new search"
 </ParamField>
 
 <ParamField body="includedDepartments" type="array">
-  Included departments. Use [locations](/api-reference/endpoint/indicators/locations) to get the desired city ids.
+  Included departments. Use [locations](/api-reference/endpoint/indicators/locations) to get the desired department ids.
 </ParamField>
 
 <ParamField body="includedSiteCategories" type="array">
@@ -189,7 +189,7 @@ curl --location 'https://api.stream.estate/searches' \
   "subscribedEvents": [
     "property.ad.create"
   ],
-  "surfaceMax": 0,
+  "surfaceMax": 200,
   "surfaceMin": 20,
   "transactionType": 0,
   "title": "mySearch"
@@ -221,7 +221,7 @@ payload = json.dumps({
   "subscribedEvents": [
     "property.ad.create"
   ],
-  "surfaceMax": 0,
+  "surfaceMax": 200,
   "surfaceMin": 20,
   "transactionType": 0,
   "title": "mySearch"
@@ -254,7 +254,7 @@ print(response.json())
     "bedroomMin": 0,
     "roomMin": null,
     "surfaceMin": 20,
-    "surfaceMax": 0,
+    "surfaceMax": 200,
     "propertyTypes": [
         0,
         1

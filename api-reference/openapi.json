@@ -790,7 +790,7 @@
           {
             "name": "excludedSites",
             "in": "query",
-            "description": "Sources sites to be excluded.",
+            "description": "Source sites to be excluded.",
             "schema": {
               "type": "array",
               "items": {
@@ -803,7 +803,7 @@
           {
             "name": "includedSites",
             "in": "query",
-            "description": "Sources sites to be included.",
+            "description": "Source sites to be included.",
             "schema": {
               "type": "array",
               "items": {
@@ -2433,7 +2433,7 @@
           {
             "name": "eventType",
             "in": "query",
-            "description": "The type of event you want to trigger.",
+            "description": "The type of event you want to trigger. Omit it to simulate a `match`.",
             "schema": {
               "type": "string",
               "enum": [
@@ -2444,8 +2444,7 @@
                 "property.ad.create",
                 "property.ad.update"
               ]
-            },
-            "required": true
+            }
           }
         ],
         "responses": {
@@ -2749,7 +2748,7 @@
           "insee": {
             "type": "string"
           },
-          "locations": {
+          "location": {
             "$ref": "#/components/schemas/GeoPoint"
           },
           "name": {

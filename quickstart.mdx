@@ -9,14 +9,14 @@ indicators over HTTP. This guide takes you from zero to your first working reque
 ## Prerequisites
 
 - A Stream Estate account — [sign up](https://stream.estate/signup) if you don't have one.
-- An API key. Create one in your account settings and keep it secret.
+- An API key. Create one on the **API Keys** page of your [console](https://stream.estate/console) and keep it secret.
 
 Every request is authenticated with the `X-API-KEY` header. There is no other auth
 step: no OAuth flow, no tokens to refresh.
 
 ## Make your first request
 
-The call below returns houses for sale in the Seine-et-Marne department (`77`),
+The call below returns houses for sale in Paris (`departments/77` — department ids are internal, not INSEE codes),
 created since 2020, within a €1.8M–1.9M budget.
 
 <CodeGroup>
